@@ -135,7 +135,7 @@
             </div>
 
             <div class="card-body p-0">
-                @include('Redistribucion_Sugeridas.table')
+                @include('redistribucion_sugeridas.table')
             </div>
         </div>
     </div>
