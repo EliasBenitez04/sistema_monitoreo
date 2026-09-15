@@ -1,29 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Pedidos Realizados</h1>
-                </div>
-                <div class="col-sm-6">
-                    <a class="btn btn-primary float-right" href="{{ route('pedido_compras.create') }}">
-                        Nuevo
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section> --}}
+    <x-page-header
+        title="Pedidos mayoristas"
+        subtitle="Registro, seguimiento, confirmación y documentación de pedidos comerciales."
+        icon="fas fa-shopping-cart">
+        <span class="badge badge-light px-3 py-2">
+            <i class="fas fa-database mr-1"></i>
+            {{ $pedido_compras->total() }} registros
+        </span>
+        <a class="btn btn-primary" href="{{ route('pedido_compras.create') }}">
+            <i class="fas fa-plus"></i>
+            Nuevo pedido
+        </a>
+    </x-page-header>
 
-    <div class="content px-3">
-
+    <div class="content px-3 pedidos-page">
         @include('sweetalert::alert')
-
-        <div class="clearfix"></div>
-
-        <div class="card">
-            @include('pedido_compras.table')
-        </div>
+        @include('pedido_compras.table')
     </div>
 @endsection
