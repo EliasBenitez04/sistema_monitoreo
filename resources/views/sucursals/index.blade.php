@@ -1,31 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Sucursales</h1>
-                </div>
-                <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('sucursal.create') }}">
-                        Nuevo
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Sucursales"
+        subtitle="Puntos operativos utilizados para stock, ventas y redistribución."
+        icon="fas fa-store">
+        <a class="btn btn-primary" href="{{ route('sucursal.create') }}">
+            <i class="fas fa-plus"></i>
+            Nueva sucursal
+        </a>
+    </x-page-header>
 
     <div class="content px-3">
-
         @include('sweetalert::alert')
 
-        <div class="clearfix"></div>
-
-        <div class="card">
-            @include('sucursals.table')
+        <div class="card sm-data-card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title mb-0">Directorio de sucursales</h3>
+                    <small class="text-muted">Mantenga actualizada la estructura territorial del sistema.</small>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                @include('sucursals.table')
+            </div>
         </div>
     </div>
-
 @endsection
