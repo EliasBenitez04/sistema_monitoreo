@@ -1,5 +1,8 @@
 // Variables
 @import 'variables';
 
-// Bootstrap
+// AdminLTE / Bootstrap base
 @import '~admin-lte/build/scss/adminlte';
+
+// Sistema Monitoreo enterprise UI overrides
+@import 'professional';
