@@ -6,6 +6,10 @@
 .env
 .env.backup
 .phpunit.result.cache
+.phpunit.cache
+coverage/
+.DS_Store
+**/.DS_Store
 docker-compose.override.yml
 Homestead.json
 Homestead.yaml
