@@ -8,7 +8,24 @@
     </a>
 
     <div class="sidebar">
-        <nav>
+        <div class="sm-sidebar-search">
+            <div class="sm-sidebar-search__box">
+                <i class="fas fa-search sm-sidebar-search__icon" aria-hidden="true"></i>
+                <input
+                    type="search"
+                    id="sm-menu-search"
+                    class="sm-sidebar-search__input"
+                    placeholder="Buscar módulo..."
+                    autocomplete="off"
+                    aria-label="Buscar módulo en el menú">
+                <span class="sm-sidebar-search__kbd">Ctrl K</span>
+            </div>
+            <div id="sm-menu-search-empty" class="sm-sidebar-search__empty">
+                No se encontraron módulos.
+            </div>
+        </div>
+
+        <nav aria-label="Navegación principal">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 @include('layouts.menu')
             </ul>
