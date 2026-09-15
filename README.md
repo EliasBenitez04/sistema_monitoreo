@@ -1,64 +1,107 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Sistema Monitoreo
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema interno desarrollado con Laravel para centralizar seguimiento operativo, órdenes de trabajo, logística, stock, compras, auditoría y redistribución de mercadería entre sucursales.
 
-## About Laravel
+## Módulos principales
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Órdenes de trabajo (OT), trazabilidad e historia general.
+- Dashboards operativos y control de OT atrasadas.
+- Logística e importación/exportación de información.
+- Stock y ventas por sucursal.
+- Redistribución sugerida, aprobación, lotes, remisiones y exportación PDF/Excel.
+- Pedidos de compra.
+- Clientes, artículos, sucursales, ciudades y departamentos.
+- Usuarios, roles y permisos con Spatie Laravel Permission.
+- Auditoría y registro de accesos.
+- Procesamiento de imágenes para prendas.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP 8.0.2+ (PHP 8.1 recomendado para desarrollo/CI).
+- Laravel 9.
+- MySQL.
+- Laravel Sanctum.
+- Spatie Laravel Permission.
+- AdminLTE 3 / Bootstrap 4 / jQuery.
+- Laravel Mix 6.
+- Maatwebsite Excel, DomPDF y PHPWord.
 
-## Learning Laravel
+## Instalación para desarrollo
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```bash
+git clone https://github.com/EliasBenitez04/sistema_monitoreo.git
+cd sistema_monitoreo
+composer install
+npm ci
+cp .env.example .env
+php artisan key:generate
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Configure la conexión MySQL en `.env` y luego compile los assets:
 
-## Laravel Sponsors
+```bash
+npm run development
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Para una compilación de producción:
 
-### Premium Partners
+```bash
+npm run production
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### Base de datos
 
-## Contributing
+El sistema nació sobre un esquema operativo existente. Actualmente el repositorio **no contiene todavía una migración base completa de todas las tablas legacy**, por lo que no debe asumirse que `php artisan migrate:fresh` reconstruirá por sí solo una instalación completa.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Las migraciones versionadas sí deben poder ejecutarse de forma incremental sobre el esquema base. Se eliminó una migración duplicada de Spatie Permission que podía romper instalaciones limpias de esa parte del esquema.
 
-## Code of Conduct
+Consulte `docs/DATABASE.md` antes de crear un entorno desde cero.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Calidad y pruebas
 
-## Security Vulnerabilities
+```bash
+composer test
+composer test:unit
+composer test:feature
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+El CI de GitHub ejecuta instalación de dependencias, pruebas PHPUnit y compilación de frontend en cada Pull Request y push a las ramas configuradas.
 
-## License
+## Arquitectura
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+La dirección arquitectónica es:
+
+```text
+Route
+  -> Controller pequeño
+      -> FormRequest
+      -> Service / Action
+          -> Eloquent / Query Builder
+```
+
+La lógica de redistribución se está separando del controlador legacy en una capa de servicios testeable. Las rutas refactorizadas se cargan después de `routes/web.php` para reemplazar de forma controlada acciones puntuales sin modificar de golpe el comportamiento restante.
+
+Más detalles en `docs/ARCHITECTURE.md`.
+
+## Seguridad
+
+- Las áreas operativas utilizan autenticación.
+- Los módulos sensibles utilizan permisos de Spatie.
+- No se deben versionar `.env`, credenciales, dumps con datos reales ni claves privadas.
+- En producción use `APP_ENV=production` y `APP_DEBUG=false`.
+
+Consulte `SECURITY.md`.
+
+## Despliegue
+
+Consulte `docs/DEPLOYMENT.md`. Antes de cualquier despliegue con cambios de esquema, realice backup de base de datos y ejecute únicamente migraciones incrementales con `php artisan migrate --force`.
+
+## Flujo de contribución
+
+1. Crear una rama desde `master`.
+2. Implementar el cambio con pruebas cuando corresponda.
+3. Ejecutar `composer test` y `npm run production`.
+4. Abrir Pull Request.
+5. Fusionar solamente con CI en verde.
+
+Consulte `CONTRIBUTING.md`.
