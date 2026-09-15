@@ -38,6 +38,9 @@ class Kernel extends HttpKernel
             // REGISTRAR IP Y ACCESOS
             // =====================================================
             \App\Http\Middleware\RegistrarAcceso::class,
+
+            // Tema visual aislado para dashboards HTML autónomos.
+            \App\Http\Middleware\InjectDashboardTheme::class,
         ],
 
         'api' => [

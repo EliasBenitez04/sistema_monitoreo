@@ -1,29 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Importación de Stock</h1>
-                </div>
-                <div class="col-sm-6">
-                    {{-- <a class="btn btn-primary float-right" href="{{ route('stocks.create') }}">
-                        Add New
-                    </a> --}}
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Importación de stock"
+        subtitle="Carga y control de información de existencias para los procesos de monitoreo."
+        icon="fas fa-boxes" />
 
     <div class="content px-3">
-
         @include('sweetalert::alert')
 
-        <div class="clearfix"></div>
-
-        <div class="card">
-            @include('stocks.table')
+        <div class="card sm-data-card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title mb-0">Datos de stock</h3>
+                    <small class="text-muted">Revise el estado de las cargas y ejecute las acciones disponibles.</small>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                @include('stocks.table')
+            </div>
         </div>
     </div>
 @endsection

@@ -1,31 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Articulos</h1>
-                </div>
-                @can('articulos create')
-                    <div class="col-sm-6 d-flex justify-content-end">
-                        <a class="btn btn-primary btn-sg" href="{{ route('articulos.create') }}" role="button">
-                            <i></i> Nuevo
-                        </a>
-                    </div>
-                @endcan
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Artículos"
+        subtitle="Catálogo maestro de productos utilizados por los procesos operativos."
+        icon="fas fa-box-open">
+        @can('articulos create')
+            <a class="btn btn-primary" href="{{ route('articulos.create') }}">
+                <i class="fas fa-plus"></i>
+                Nuevo artículo
+            </a>
+        @endcan
+    </x-page-header>
 
     <div class="content px-3">
-
         @include('sweetalert::alert')
 
-        <div class="clearfix"></div>
-
-        <div class="card">
-            @include('articulos.table')
+        <div class="card sm-data-card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title mb-0">Catálogo de artículos</h3>
+                    <small class="text-muted">Consulte, edite y mantenga actualizada la información de productos.</small>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                @include('articulos.table')
+            </div>
         </div>
     </div>
 @endsection

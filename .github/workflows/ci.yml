@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - 'refactor/**'
+      - 'design/**'
   pull_request:
 
 permissions:
@@ -35,6 +36,9 @@ jobs:
 
       - name: Run PHPUnit
         run: composer test
+
+      - name: Compile Blade views
+        run: php artisan view:cache
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

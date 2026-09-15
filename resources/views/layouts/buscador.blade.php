@@ -1,19 +1,24 @@
-<from id="form-busqueda">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control buscar" name="buscar" value="{{ request()->get('buscar', null) }}"
-            placeholder="Buscar..." data-url="{{ $url }}" aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
+<form id="form-busqueda" method="GET" action="{{ $url }}" class="sm-search-form mb-3">
+    <div class="input-group sm-search-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">
+                <i class="fas fa-search" aria-hidden="true"></i>
+            </span>
+        </div>
 
-    </div>
-</from>
+        <input
+            type="search"
+            class="form-control buscar"
+            name="buscar"
+            value="{{ request()->get('buscar', '') }}"
+            placeholder="Buscar registros..."
+            data-url="{{ $url }}"
+            aria-label="Buscar registros">
 
-{{-- <!-- Buscador de Carga Fotos -->
-<form id="form-busqueda-fotos" method="GET" action="{{ route('carga_fotos.index') }}">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" name="search" value="{{ request()->get('search', '') }}"
-            placeholder="Buscar por OT, descripción o línea..." aria-describedby="button-buscar-fotos">
-        <button class="btn btn-outline-secondary" type="submit" id="button-buscar-fotos">
-            Buscar
-        </button>
+        <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="submit">
+                Buscar
+            </button>
+        </div>
     </div>
-</form> --}}
+</form>
