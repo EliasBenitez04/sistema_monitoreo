@@ -1,0 +1,185 @@
+/* Module-specific V3 normalization for legacy custom screens. */
+
+/* --------------------------------------------------------------------------
+ | PEDIDOS
+ * -------------------------------------------------------------------------- */
+
+.sm-ui-v3 .pedidos-page .enterprise-table-header {
+    display: none !important;
+}
+
+.sm-ui-v3 .pedidos-page .enterprise-table-card {
+    border: 1px solid #dce5ef !important;
+    border-radius: 14px !important;
+    box-shadow: var(--sm-v3-shadow-sm) !important;
+    background: #fff !important;
+}
+
+.sm-ui-v3 .pedidos-page .enterprise-table-wrapper {
+    overflow-x: auto !important;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+
+.sm-ui-v3 .pedidos-page .enterprise-table {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    font-size: 11px !important;
+}
+
+.sm-ui-v3 .pedidos-page .enterprise-table thead th {
+    background: #f7f9fc !important;
+    color: #526174 !important;
+    border-bottom: 1px solid #dbe3ec !important;
+    font-size: 9px !important;
+    letter-spacing: .055em !important;
+    text-transform: uppercase !important;
+    font-weight: 800 !important;
+    padding: 12px 14px !important;
+    white-space: nowrap;
+}
+
+.sm-ui-v3 .pedidos-page .enterprise-table tbody td {
+    border-bottom: 1px solid #edf1f5 !important;
+    padding: 12px 14px !important;
+    vertical-align: middle !important;
+}
+
+.sm-ui-v3 .pedidos-page .enterprise-table tbody tr:nth-child(even) {
+    background: rgba(248, 250, 252, .5) !important;
+}
+
+.sm-ui-v3 .pedidos-page .enterprise-table tbody tr:hover {
+    background: #f3f7fd !important;
+}
+
+.sm-ui-v3 .pedidos-page .enterprise-table-footer {
+    background: #fbfdff !important;
+    border-top: 1px solid #e8eef5 !important;
+    padding: 12px 16px !important;
+}
+
+.sm-ui-v3 .pedidos-page .action-btn {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 9px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease !important;
+}
+
+.sm-ui-v3 .pedidos-page .action-btn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 10px rgba(15, 23, 42, .1) !important;
+}
+
+/* --------------------------------------------------------------------------
+ | REDISTRIBUCIÓN
+ * -------------------------------------------------------------------------- */
+
+.sm-ui-v3 .redistribucion-page .sm-filter-card .card-body {
+    padding: 20px !important;
+}
+
+.sm-ui-v3 .redistribucion-page .sm-toolbar {
+    background: #f8fbff;
+    border-color: #dce7f3 !important;
+}
+
+.sm-ui-v3 .redistribucion-page .sm-data-card {
+    overflow: hidden;
+}
+
+.sm-ui-v3 .redistribucion-page table {
+    font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+ | GENERIC LEGACY ENTERPRISE COMPONENTS
+ * -------------------------------------------------------------------------- */
+
+.sm-ui-v3 .enterprise-header,
+.sm-ui-v3 .dashboard-header,
+.sm-ui-v3 .module-header {
+    border-radius: 14px !important;
+}
+
+.sm-ui-v3 .enterprise-card,
+.sm-ui-v3 .kpi-card,
+.sm-ui-v3 .filter-card,
+.sm-ui-v3 .results-card {
+    border-color: #dce5ef !important;
+    box-shadow: var(--sm-v3-shadow-sm) !important;
+}
+
+.sm-ui-v3 .enterprise-actions {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 5px !important;
+}
+
+.sm-ui-v3 .enterprise-status,
+.sm-ui-v3 .status-badge {
+    border-radius: 999px !important;
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+ | LARGE OPERATIONAL TABLES
+ * -------------------------------------------------------------------------- */
+
+.sm-ui-v3 .table-responsive > table {
+    min-width: 720px;
+}
+
+.sm-ui-v3 table td.text-right,
+.sm-ui-v3 table th.text-right,
+.sm-ui-v3 .amount-cell,
+.sm-ui-v3 .quantity-badge {
+    font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+ | PROFILE / DETAIL PAGES
+ * -------------------------------------------------------------------------- */
+
+.sm-ui-v3 .profile-user-img,
+.sm-ui-v3 .img-circle {
+    object-fit: cover;
+}
+
+.sm-ui-v3 .list-group-item {
+    border-color: #edf1f5;
+    padding: 11px 14px;
+}
+
+.sm-ui-v3 .description-block {
+    margin: 10px 0;
+}
+
+/* --------------------------------------------------------------------------
+ | MOBILE MODULE NORMALIZATION
+ * -------------------------------------------------------------------------- */
+
+@media (max-width: 767.98px) {
+    .sm-ui-v3 .pedidos-page .enterprise-table-card {
+        border-radius: 12px !important;
+    }
+
+    .sm-ui-v3 .pedidos-page .enterprise-table-footer {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px;
+    }
+
+    .sm-ui-v3 .redistribucion-page .sm-filter-card .card-body {
+        padding: 16px !important;
+    }
+}
