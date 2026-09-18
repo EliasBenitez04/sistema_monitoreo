@@ -1,49 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1>
-                        Crear Clientes
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Nuevo cliente"
+        subtitle="Registre los datos comerciales y de contacto del cliente."
+        icon="fas fa-user-plus">
+        <a href="{{ route('clientes.index') }}" class="btn btn-default">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </x-page-header>
 
     <div class="content px-3">
-
         @include('adminlte-templates::common.errors')
+        @include('sweetalert::alert')
 
-        <div class="card">
-
+        <div class="card sm-form-card">
             {!! Form::open([
                 'route' => 'clientes.store',
                 'class' => 'confirm-submit',
                 'files' => true,
             ]) !!}
 
-            {!! Form::open(['route' => 'clientes.store','class' => 'confirm-submit' ]) !!}
-
             <div class="card-body">
-                @include('sweetalert::alert')
-
-
                 <div class="row">
                     @include('clientes.fields')
                 </div>
-
             </div>
 
-            <div class="card-footer">
-                {!! Form::submit('Guardar', ['class' => 'btn btn-success']) !!}
-                <a href="{{ route('clientes.index') }}" class="btn btn-primary"> Cancelar </a>
+            <div class="card-footer d-flex justify-content-end flex-wrap">
+                <a href="{{ route('clientes.index') }}" class="btn btn-default">
+                    Cancelar
+                </a>
+                {!! Form::submit('Guardar cliente', ['class' => 'btn btn-primary']) !!}
             </div>
 
             {!! Form::close() !!}
-
         </div>
     </div>
 @endsection
