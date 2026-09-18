@@ -146,6 +146,10 @@
         const counter = document.getElementById('counterArticulos');
         const progressBar = document.getElementById('progressBarArticulos');
 
+        if (!btnImport || !fileInput || !loader || !counter || !progressBar) {
+            return;
+        }
+
         let seconds = 0;
         let interval;
         let fakeProgress;
@@ -260,5 +264,5 @@
 </script>
 
 @push('page_css')
-    <link rel="stylesheet" href="{{ asset('css/modules/articulos-table.css') }}?v=20260918-3">
+    <link rel="stylesheet" href="{{ asset('css/modules/articulos-table.css') }}?v=20260918-4">
 @endpush
