@@ -1,29 +1,18 @@
 @extends('layouts.app')
 
+@section('title', 'Control de producto terminado | ' . config('app.name'))
+
 @section('content')
-    
+    <x-page-header
+        title="Control de producto terminado"
+        subtitle="Seguimiento desde terminación hasta el envío a locales."
+        icon="fas fa-industry">
+    </x-page-header>
 
-    <div class="container-fluid control-container">
-
-        ```
+    <div class="content px-3 control-container">
         {{-- =====================================================
-     ENCABEZADO
-====================================================== --}}
-        <div class="mb-3">
-            <h2 class="page-title">
-                <i class="fas fa-industry me-1"></i>
-                Control de Producto Terminado
-            </h2>
-
-            <div class="page-subtitle">
-                Seguimiento desde Terminación hasta el envío a locales
-            </div>
-        </div>
-
-
-        {{-- =====================================================
-     FILTROS PRINCIPALES
-====================================================== --}}
+             FILTROS PRINCIPALES
+        ====================================================== --}}
         <div class="card shadow-sm mb-4 filtros-card">
             <div class="card-body">
 
@@ -132,10 +121,10 @@
                     {{-- BOTONES --}}
                     <div class="col-md-3 mt-3 mt-md-0">
 
-                        <div class="d-flex gap-2">
+                        <div class="d-flex">
 
                             <button type="submit" class="btn btn-primary btn-consultar flex-grow-1">
-                                <i class="fas fa-search me-1"></i>
+                                <i class="fas fa-search mr-1"></i>
                                 Consultar
                             </button>
 
@@ -157,7 +146,7 @@
         {{-- =====================================================
      INDICADORES
 ====================================================== --}}
-        <div class="row g-3 mb-4">
+        <div class="row mb-4">
 
             {{-- PRODUCTO TERMINADO --}}
             <div class="col-xl-3 col-md-6">
@@ -312,7 +301,7 @@
         @if ($otsNoEnviadas > 0)
             <div class="alert alert-danger control-alert d-flex align-items-center mb-4">
 
-                <i class="fas fa-exclamation-triangle me-2"></i>
+                <i class="fas fa-exclamation-triangle mr-2"></i>
 
                 <div>
                     <strong>Atención:</strong>
@@ -323,7 +312,7 @@
         @elseif($totalDiferencia > 0)
             <div class="alert alert-warning control-alert d-flex align-items-center mb-4">
 
-                <i class="fas fa-exclamation-circle me-2"></i>
+                <i class="fas fa-exclamation-circle mr-2"></i>
 
                 <div>
                     <strong>Envíos pendientes:</strong>
@@ -334,7 +323,7 @@
         @elseif($totalTerminado > 0)
             <div class="alert alert-success control-alert d-flex align-items-center mb-4">
 
-                <i class="fas fa-check-circle me-2"></i>
+                <i class="fas fa-check-circle mr-2"></i>
 
                 <div>
                     <strong>Todo en orden:</strong>
@@ -356,7 +345,7 @@
 
                     <div>
                         <strong>
-                            <i class="fas fa-list-alt me-1"></i>
+                            <i class="fas fa-list-alt mr-1"></i>
                             Seguimiento de Producto Terminado
                         </strong>
 
@@ -490,17 +479,17 @@
 
                                         @if ($item->estado_control === 'FINALIZADO')
                                             <span class="badge bg-success estado-badge">
-                                                <i class="fas fa-check me-1"></i>
+                                                <i class="fas fa-check mr-1"></i>
                                                 FINALIZADO
                                             </span>
                                         @elseif($item->estado_control === 'NO ENVIADO')
                                             <span class="badge bg-danger estado-badge">
-                                                <i class="fas fa-times me-1"></i>
+                                                <i class="fas fa-times mr-1"></i>
                                                 NO ENVIADO
                                             </span>
                                         @else
                                             <span class="badge bg-warning text-dark estado-badge">
-                                                <i class="fas fa-adjust me-1"></i>
+                                                <i class="fas fa-adjust mr-1"></i>
                                                 PARCIAL
                                             </span>
                                         @endif
@@ -575,7 +564,7 @@
 
                     <div>
                         <div class="detalle-titulo">
-                            <i class="fas fa-store me-1"></i>
+                            <i class="fas fa-store mr-1"></i>
                             Detalle de Envíos a Locales
                         </div>
 
@@ -610,7 +599,7 @@
              TARJETAS RESUMEN
         ================================================== --}}
 
-                <div class="row g-3 mb-4" id="resumenEnvios">
+                <div class="row mb-4" id="resumenEnvios">
 
                     {{-- MOVIMIENTOS --}}
                     <div class="col-xl-3 col-md-6">
@@ -740,7 +729,7 @@
 
                 <div class="filtros-envio mb-3">
 
-                    <div class="row g-2 align-items-center">
+                    <div class="row align-items-center">
 
                         {{-- BUSCAR --}}
                         <div class="col-lg-5 col-md-6">
@@ -769,7 +758,7 @@
                         {{-- LOCAL --}}
                         <div class="col-lg-4 col-md-6">
 
-                            <select id="filtroLocal" class="form-select select2-local">
+                            <select id="filtroLocal" class="form-control select2-local">
                                 <option value="">Todos los locales</option>
 
                                 @foreach ($detalleLogistica->pluck('sucursal')->filter()->unique()->sort() as $local)
@@ -787,7 +776,7 @@
 
                             <button type="button" id="limpiarFiltros" class="btn btn-outline-primary btn-filtro w-100">
 
-                                <i class="fas fa-eraser me-1"></i>
+                                <i class="fas fa-eraser mr-1"></i>
                                 Limpiar filtros
 
                             </button>
