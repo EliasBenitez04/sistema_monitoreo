@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
+@section('title', 'Editar rol | ' . config('app.name'))
+
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1>
-                        Editar Roles
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Editar rol"
+        subtitle="Actualice el rol y sus permisos."
+        icon="fas fa-user-shield">
+        <a href="{{ route('roles.index') }}" class="btn btn-default">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </x-page-header>
 
     <div class="content px-3">
 
         @include('adminlte-templates::common.errors')
 
-        <div class="card">
+        <div class="card sm-form-card">
 
             {!! Form::model($role, ['route' => ['roles.update', $role->id], 'method' => 'patch']) !!}
 
@@ -27,9 +27,9 @@
                 </div>
             </div>
 
-            <div class="card-footer">
-                {!! Form::submit('Actualizar', ['class' => 'btn btn-success']) !!}
-                <a href="{{ route('roles.index') }}" class="btn btn-primary"> Cancelar </a>
+            <div class="card-footer d-flex justify-content-end">
+                {!! Form::submit('Actualizar', ['class' => 'btn btn-primary']) !!}
+                <a href="{{ route('roles.index') }}" class="btn btn-default ml-2">Cancelar</a>
             </div>
 
             {!! Form::close() !!}
