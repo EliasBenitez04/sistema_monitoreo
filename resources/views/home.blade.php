@@ -81,7 +81,7 @@
                                     @forelse ($ultimosLotes as $lote)
                                         <tr>
                                             <td><strong>{{ $lote->numero_lote }}</strong></td>
-                                            <td>{{ CarbonCarbon::parse($lote->fecha_generacion)->format('d/m/Y H:i') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($lote->fecha_generacion)->format('d/m/Y H:i') }}</td>
                                             <td class="text-right">{{ number_format($lote->cantidad_unidades) }}</td>
                                             <td class="text-right">{{ number_format($lote->unidades_finalizadas) }}</td>
                                             <td style="min-width: 130px;">
