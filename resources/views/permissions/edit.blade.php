@@ -1,24 +1,24 @@
 @extends('layouts.app')
 
+@section('title', 'Editar permiso | ' . config('app.name'))
+
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1>
-                        Editar Permiso
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Editar permiso"
+        subtitle="Actualice el permiso seleccionado."
+        icon="fas fa-key">
+        <a href="{{ route('permissions.index') }}" class="btn btn-default">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </x-page-header>
 
     <div class="content px-3">
         
         @include('adminlte-templates::common.errors')
         @include('sweetalert::alert')
         
-        <div class="card">
+        <div class="card sm-form-card">
 
             {!! Form::model($permissions, ['route' => ['permissions.update', $permissions->id], 'method' => 'patch']) !!}
 
@@ -29,9 +29,9 @@
                 </div>
             </div>
 
-            <div class="card-footer">
-                {!! Form::submit('Actualizar', ['class' => 'btn btn-success']) !!}
-                <a href="{{ route('permissions.index') }}" class="btn btn-primary"> Cancelar </a>
+            <div class="card-footer d-flex justify-content-end">
+                {!! Form::submit('Actualizar', ['class' => 'btn btn-primary']) !!}
+                <a href="{{ route('permissions.index') }}" class="btn btn-default ml-2">Cancelar</a>
             </div>
 
             {!! Form::close() !!}
