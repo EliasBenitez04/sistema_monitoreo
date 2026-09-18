@@ -1,50 +1,21 @@
 @extends('layouts.app')
 
+@section('title', 'Proceso de redistribución | ' . config('app.name'))
+
 @section('content')
-    <div class="redistribucion-proceso-page">
+    <x-page-header
+        :title="'Proceso #' . $proceso->id"
+        subtitle="Gestión y preparación de transferencias masivas."
+        icon="fas fa-random">
+        <span class="badge badge-success">Aprobado</span>
+        <a href="{{ route('RedistribucionSugeridas.lotes') }}" class="btn btn-default">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </x-page-header>
 
-        <div class="container-fluid">
-
-            {{-- ===================================================== --}}
-            {{-- HEADER --}}
-            {{-- ===================================================== --}}
-
-            <div class="process-header mb-4">
-
-                <div class="header-left">
-
-                    <div class="header-icon">
-                        <i class="fas fa-random"></i>
-                    </div>
-
-                    <div>
-                        <span class="header-overline">
-                            REDISTRIBUCIÓN
-                        </span>
-
-                        <h3>
-                            Proceso #{{ $proceso->id }}
-                        </h3>
-
-                        <p>
-                            Gestión y preparación de transferencias masivas
-                        </p>
-                    </div>
-
-                </div>
-
-                <div class="header-right">
-
-                    <span class="process-status">
-                        <span class="status-dot"></span>
-                        APROBADO
-                    </span>
-
-                </div>
-
-            </div>
-
-
+    <div class="content px-3 redistribucion-proceso-page">
+        <div class="container-fluid px-0">
             {{-- ===================================================== --}}
             {{-- RESUMEN --}}
             {{-- ===================================================== --}}
