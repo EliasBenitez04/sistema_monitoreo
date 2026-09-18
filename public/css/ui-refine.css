@@ -1660,3 +1660,51 @@ body.sm-app-shell [class*="lote-icon"] {
 body.sm-app-shell .rounded-lg {
     border-radius: var(--sm-radius) !important;
 }
+
+
+/* PROGRESSIVE ENHANCEMENTS */
+.sm-sticky-head thead th {
+    position: sticky;
+    top: 58px;
+    z-index: 4;
+    box-shadow: 0 1px 0 var(--sm-border);
+}
+
+.sm-scroll-top {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 1040;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: #334155;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, .14);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity .15s ease, transform .15s ease, visibility .15s ease, background-color .15s ease;
+}
+
+.sm-scroll-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.sm-scroll-top:hover {
+    color: #fff;
+    background: var(--sm-primary);
+}
+
+@media (max-width: 991.98px) {
+    .sm-sticky-head thead th {
+        top: 0;
+    }
+}
