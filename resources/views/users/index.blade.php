@@ -1,84 +1,39 @@
 @extends('layouts.app')
 
+@section('title', 'Usuarios | ' . config('app.name'))
+
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Usuarios</h1>
-                </div>
-                <div class="col-sm-6">
-                    <a class="btn btn-primary float-right" href="{{ route('users.create') }}">
-                        Nuevo Usuario
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Usuarios"
+        subtitle="Listado y búsqueda de cuentas registradas."
+        icon="fas fa-users">
+        <a class="btn btn-primary" href="{{ route('users.create') }}">
+            <i class="fas fa-user-plus"></i>
+            Nuevo usuario
+        </a>
+    </x-page-header>
 
     <div class="content px-3">
-
         @include('sweetalert::alert')
 
-        <div class="clearfix"></div>
+        <div class="card sm-data-card">
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
+                <div class="mb-2 mb-md-0">
+                    <h3 class="card-title mb-0">Directorio de usuarios</h3>
+                    <small class="text-muted">Busque por nombre, correo, documento o rol.</small>
+                </div>
 
-        <div class="card">
-            @include('users.table')
+                <div class="sm-table-search">
+                    @includeIf('layouts.buscador', [
+                        'url' => route('users.index'),
+                        'target' => '#tabla-container',
+                    ])
+                </div>
+            </div>
+
+            <div class="card-body p-0" id="tabla-container">
+                @include('users.table')
+            </div>
         </div>
     </div>
 @endsection
-
-@extends('layouts.app')
-
-@section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Usuarios</h1>
-                </div>
-                <div class="col-sm-6">
-                    <a class="btn btn-primary float-right" href="{{ route('users.create') }}">
-                        Nuevo Usuario
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="content px-3">
-
-        @include('sweetalert::alert')
-
-        <div class="clearfix">
-            @includeIf('layouts.buscador')
-        </div>
-
-        <div class="card" id="tabla-container">
-            @include('users.table')
-        </div>
-    </div>
-@endsection
-
-@push('page_scripts')
-    <script type="text/javascript">
-        $(document).ready(function() {
-            /** bucador mediante ajax*/
-            $('#buscar').on('input', function() {
-                var query = $(this).val(); //valor del input buscar
-                $.ajax({
-                    url: '{{ route('users.index') }}',
-                    type: 'GET',
-                    data: {
-                        buscar: query
-                    },
-                    success: function(response) {
-                        $('#tabla-container').empty(); //vaciar la tabla
-                        $('#tabla-container').html(
-                            response); //cargar devuelta el html tabla segun lo filtrado
-                    }
-                });
-            });
-        });
-    </script>
-@endpush

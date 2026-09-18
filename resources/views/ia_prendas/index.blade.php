@@ -1,264 +1,143 @@
 @extends('layouts.app')
 
+@section('title', 'Procesador de imágenes IA | ' . config('app.name'))
+
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-
-                <div class="col-sm-6">
-                    <h1>IA - Eliminación de Fondo</h1>
-                </div>
-
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Procesador de imágenes"
+        subtitle="Elimine fondos y genere imágenes procesadas por lote."
+        icon="fas fa-magic">
+        <a href="{{ route('ia.descargar') }}" class="btn btn-default">
+            <i class="fas fa-download"></i>
+            Descargar ZIP
+        </a>
+    </x-page-header>
 
     <div class="content px-3">
-
         @include('sweetalert::alert')
 
-        <div class="clearfix"></div>
+        @if (session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
 
-        <div class="card shadow border-0 rounded-lg">
+        @if (session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+            @if (session('log'))
+                <pre class="small bg-light border rounded p-3">{{ print_r(session('log'), true) }}</pre>
+            @endif
+        @endif
 
-            <div class="card-header bg-blue text-white d-flex align-items-center">
-                <i class="fas fa-magic mr-2"></i>
-                <h3 class="card-title mb-0">Procesador de Imágenes IA</h3>
+        <div class="card sm-form-card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title mb-0">Nuevo procesamiento</h3>
+                    <small class="text-muted">Seleccione una o más imágenes y, si desea, un fondo de temporada.</small>
+                </div>
             </div>
 
-            <div class="card-body p-4">
+            <form id="formIA" method="POST" action="{{ route('ia.subir') }}" enctype="multipart/form-data">
+                @csrf
 
-                {{-- MENSAJES --}}
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
-
-                @if (session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
-                    </div>
-
-                    @if (session('log'))
-                        <pre>{{ print_r(session('log'), true) }}</pre>
-                    @endif
-                @endif
-
-                {{-- FORM --}}
-                <form id="formIA" method="POST" action="{{ route('ia.subir') }}" enctype="multipart/form-data">
-                    @csrf
-
+                <div class="card-body">
                     <div class="form-group">
-                        <label class="font-weight-bold text-dark">
-                            Seleccionar imágenes
-                        </label>
-
-                        <input type="file" name="imagenes[]" class="form-control" multiple accept="image/*" required>
+                        <label for="imagenes">Imágenes</label>
+                        <input type="file" id="imagenes" name="imagenes[]" class="form-control"
+                            multiple accept="image/*" required>
                     </div>
 
-                    <div class="form-group mt-3">
-                        <label class="font-weight-bold text-dark">
-                            Fondo (opcional)
-                        </label>
-
-                        <select name="estilo">
+                    <div class="form-group mb-0">
+                        <label for="estilo">Fondo opcional</label>
+                        <select name="estilo" id="estilo" class="form-control">
+                            <option value="">Sin fondo adicional</option>
                             <option value="verano">Verano</option>
                             <option value="invierno">Invierno</option>
                             <option value="otoño">Otoño</option>
                         </select>
                     </div>
+                </div>
 
-                    <button type="submit" id="btnIA" class="btn btn-primary btn-lg px-4 shadow-sm">
-                        <i class="fas fa-magic mr-2"></i>
-                        Procesar IA + Fondo
+                <div class="card-footer d-flex justify-content-end">
+                    <button type="submit" id="btnIA" class="btn btn-primary">
+                        <i class="fas fa-magic"></i>
+                        Procesar imágenes
                     </button>
-
-                    <a href="{{ route('ia.descargar') }}" class="btn btn-success btn-lg px-4 shadow-sm">
-                        <i class="fas fa-download mr-2"></i>
-                        Descargar ZIP
-                    </a>
-
-                </form>
-
-            </div>
-
+                </div>
+            </form>
         </div>
 
-    </div>
+        @if (session('preview_ia'))
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h3 class="card-title mb-0">Vista previa</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (session('preview_ia') as $img)
+                            <div class="col-lg-4 col-md-6 mb-3">
+                                <div class="border rounded p-2 h-100">
+                                    <small class="text-muted d-block mb-1">Original</small>
+                                    <img src="{{ $img['original'] }}" class="sm-ia-preview mb-3" alt="Imagen original">
 
-    {{-- ================= OVERLAY IA ================= --}}
-    <div id="loadingOverlay">
+                                    <small class="text-success d-block mb-1">Procesada</small>
+                                    <img src="{{ $img['procesada'] }}" class="sm-ia-preview mb-3" alt="Imagen procesada">
 
-        <div class="loading-box">
-
-            <div class="icon-circle">
-                <i class="fas fa-robot"></i>
-            </div>
-
-            <div class="spinner-border text-primary mb-3" style="width:55px;height:55px;"></div>
-
-            <h4>Procesando IA</h4>
-            <p>Eliminando fondo de las imágenes...</p>
-
-            <div class="progress-custom">
-                <div id="progressBar"></div>
-            </div>
-
-            <div id="counter">0s</div>
-
-        </div>
-
-    </div>
-
-    {{-- ================= PREVIEW ================= --}}
-    @if (session('preview_ia'))
-        <div class="mt-4">
-
-            <h4 class="mb-3">Vista previa antes / después</h4>
-
-            <div class="row">
-
-                @foreach (session('preview_ia') as $img)
-                    <div class="col-md-4 mb-4">
-
-                        <div class="card shadow-sm">
-
-                            <div class="card-body">
-
-                                {{-- ORIGINAL --}}
-                                <div class="text-center mb-2">
-                                    <small class="text-muted">ANTES</small>
-                                    <img src="{{ $img['original'] }}" class="img-fluid rounded border"
-                                        style="height: 180px; object-fit: cover;">
+                                    @if (!empty($img['final']))
+                                        <small class="text-primary d-block mb-1">Final</small>
+                                        <img src="{{ $img['final'] }}" class="sm-ia-preview" alt="Imagen final">
+                                    @endif
                                 </div>
-
-                                {{-- IA --}}
-                                <div class="text-center mb-2">
-                                    <small class="text-success">DESPUÉS (IA)</small>
-                                    <img src="{{ $img['procesada'] }}" class="img-fluid rounded border border-success"
-                                        style="height: 180px; object-fit: cover;">
-                                </div>
-
-                                {{-- FINAL --}}
-                                @if (!empty($img['final']))
-                                    <div class="text-center">
-                                        <small class="text-primary">FINAL (FONDO + IA)</small>
-                                        <img src="{{ $img['final'] }}" class="img-fluid rounded border border-primary"
-                                            style="height: 180px; object-fit: cover;">
-                                    </div>
-                                @endif
-
                             </div>
-
-                        </div>
-
+                        @endforeach
                     </div>
-                @endforeach
-
+                </div>
             </div>
+        @endif
+    </div>
 
+    <div id="loadingOverlay" class="sm-ia-overlay">
+        <div class="sm-ia-overlay__panel">
+            <div class="spinner-border text-primary mb-3" role="status">
+                <span class="sr-only">Procesando...</span>
+            </div>
+            <h4>Procesando imágenes</h4>
+            <p class="text-muted mb-0">El proceso puede tardar algunos segundos.</p>
+            <div class="sm-ia-progress">
+                <div id="progressBar" class="sm-ia-progress__bar"></div>
+            </div>
+            <strong id="counter">0s</strong>
         </div>
-    @endif
+    </div>
+@endsection
 
-    {{-- ================= ESTILOS ================= --}}
-    <style>
-        #loadingOverlay {
-            position: fixed;
-            inset: 0;
-            display: none;
-            z-index: 99999;
-            background: rgba(0, 0, 0, .65);
-            backdrop-filter: blur(8px);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .loading-box {
-            width: 380px;
-            background: #fff;
-            border-radius: 18px;
-            padding: 35px 30px;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, .25);
-        }
-
-        .icon-circle {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 18px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #2563eb, #60a5fa);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 28px;
-        }
-
-        .progress-custom {
-            width: 100%;
-            height: 10px;
-            background: #e5e7eb;
-            border-radius: 30px;
-            overflow: hidden;
-            margin-bottom: 18px;
-        }
-
-        #progressBar {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa);
-            transition: width .4s ease;
-        }
-
-        #counter {
-            font-size: 18px;
-            font-weight: 700;
-            color: #2563eb;
-        }
-
-        .card img {
-            transition: all .3s ease;
-        }
-
-        .card img:hover {
-            transform: scale(1.03);
-        }
-    </style>
-
-    {{-- ================= SCRIPT ================= --}}
+@push('page_scripts')
     <script>
-        document.getElementById('formIA').addEventListener('submit', function() {
+        document.getElementById('formIA')?.addEventListener('submit', function () {
+            const overlay = document.getElementById('loadingOverlay');
+            const button = document.getElementById('btnIA');
+            const counter = document.getElementById('counter');
+            const progressBar = document.getElementById('progressBar');
 
-            document.getElementById('loadingOverlay').style.display = 'flex';
-
-            let btn = document.getElementById('btnIA');
-            btn.disabled = true;
-            btn.innerHTML = `
-        <span class="spinner-border spinner-border-sm mr-2"></span>
-        Procesando...
-    `;
+            overlay.style.display = 'flex';
+            button.disabled = true;
+            button.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Procesando...';
 
             let seconds = 0;
             let progress = 0;
 
-            document.getElementById('counter').innerText = "0s";
-            document.getElementById('progressBar').style.width = "0%";
+            counter.innerText = '0s';
+            progressBar.style.width = '0%';
 
-            let interval = setInterval(() => {
-                seconds++;
-                document.getElementById('counter').innerText = seconds + "s";
+            window.setInterval(function () {
+                seconds += 1;
+                counter.innerText = seconds + 's';
             }, 1000);
 
-            setInterval(() => {
+            window.setInterval(function () {
                 if (progress < 90) {
                     progress += Math.random() * 8;
-                    document.getElementById('progressBar').style.width = progress + "%";
+                    progressBar.style.width = Math.min(progress, 90) + '%';
                 }
             }, 500);
-
         });
     </script>
-
-@endsection
+@endpush
