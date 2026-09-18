@@ -1,0 +1,786 @@
+/*
+ * Sistema Monitoreo — UI Refine
+ * Capa visual sobria sobre AdminLTE y los estilos V2/V3 existentes.
+ * Objetivo: menos ruido visual, mejor jerarquía y mayor consistencia.
+ */
+
+:root {
+    --ui-primary: #2563eb;
+    --ui-primary-hover: #1d4ed8;
+    --ui-primary-soft: #eff6ff;
+    --ui-sidebar: #111827;
+    --ui-sidebar-border: #1f2937;
+    --ui-sidebar-text: #cbd5e1;
+    --ui-sidebar-muted: #7c8aa0;
+    --ui-bg: #f5f7fa;
+    --ui-surface: #ffffff;
+    --ui-surface-soft: #f8fafc;
+    --ui-border: #e2e8f0;
+    --ui-border-strong: #cbd5e1;
+    --ui-text: #172033;
+    --ui-text-soft: #475569;
+    --ui-muted: #64748b;
+    --ui-radius: 8px;
+    --ui-radius-sm: 6px;
+    --ui-shadow: 0 1px 2px rgba(15, 23, 42, .05);
+    --ui-shadow-menu: 0 10px 30px rgba(15, 23, 42, .12);
+    --ui-sidebar-width: 244px;
+}
+
+html,
+body.sm-app-shell {
+    background: var(--ui-bg) !important;
+}
+
+body.sm-app-shell {
+    color: var(--ui-text-soft);
+    font-size: 13px;
+    letter-spacing: 0;
+}
+
+body.sm-app-shell .wrapper,
+body.sm-app-shell .content-wrapper {
+    background: var(--ui-bg) !important;
+}
+
+body.sm-app-shell .content-wrapper {
+    background-image: none !important;
+}
+
+/* App shell */
+body.sm-app-shell .main-header.navbar {
+    min-height: 56px !important;
+    height: 56px;
+    padding: 0 14px;
+    background: #fff !important;
+    border-bottom: 1px solid var(--ui-border) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+body.sm-app-shell .main-header .nav-link {
+    height: 36px;
+    min-width: 36px;
+    margin: 10px 2px;
+    border-radius: var(--ui-radius-sm);
+    color: var(--ui-text-soft) !important;
+}
+
+body.sm-app-shell .main-header .nav-link:hover,
+body.sm-app-shell .main-header .nav-link:focus {
+    color: var(--ui-text) !important;
+    background: #f1f5f9 !important;
+}
+
+body.sm-app-shell .main-header .nav-link[data-widget="pushmenu"],
+body.sm-app-shell .main-header .nav-link[data-widget="fullscreen"] {
+    width: 36px;
+    height: 36px;
+    margin: 0 2px;
+    border: 0 !important;
+    border-radius: var(--ui-radius-sm);
+    background: transparent;
+    transform: none !important;
+}
+
+body.sm-app-shell .sm-topbar-context {
+    padding-left: 8px;
+}
+
+body.sm-app-shell .sm-topbar-context__title {
+    color: var(--ui-text);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+body.sm-app-shell .sm-topbar-context__subtitle {
+    color: var(--ui-muted);
+    font-size: 10px;
+    letter-spacing: 0;
+}
+
+body.sm-app-shell .sm-user-trigger {
+    gap: 8px;
+    padding: 4px 7px !important;
+}
+
+body.sm-app-shell .sm-user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--ui-radius-sm);
+    border: 1px solid var(--ui-border);
+    box-shadow: none;
+}
+
+body.sm-app-shell .sm-user-name {
+    color: var(--ui-text);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+body.sm-app-shell .sm-user-role {
+    color: var(--ui-muted);
+    font-size: 9px;
+}
+
+/* Sidebar */
+body.sm-app-shell .main-sidebar,
+body.sm-app-shell.layout-fixed .main-sidebar {
+    width: var(--ui-sidebar-width) !important;
+    background: var(--ui-sidebar) !important;
+    border-right: 1px solid var(--ui-sidebar-border);
+    box-shadow: none !important;
+}
+
+body.sm-app-shell .brand-link {
+    height: 56px;
+    padding: 8px 12px !important;
+    gap: 9px;
+    background: transparent !important;
+    border-bottom: 1px solid rgba(148, 163, 184, .12) !important;
+}
+
+body.sm-app-shell .brand-link .brand-image,
+body.sm-app-shell .sm-brand-logo {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 7px !important;
+    border: 1px solid rgba(255, 255, 255, .12);
+}
+
+body.sm-app-shell .sm-brand-name {
+    color: #f8fafc;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+body.sm-app-shell .sm-brand-caption {
+    margin-top: 3px;
+    color: #7f8da3;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: .04em;
+}
+
+body.sm-app-shell .sidebar {
+    padding: 8px 8px 16px;
+}
+
+body.sm-app-shell .sm-sidebar-search {
+    position: static;
+    padding: 8px 4px 6px;
+    background: transparent !important;
+}
+
+body.sm-app-shell .sm-sidebar-search__input {
+    height: 34px;
+    padding-left: 31px;
+    border-radius: 7px;
+    border-color: rgba(148, 163, 184, .14);
+    background: rgba(255, 255, 255, .045);
+    font-size: 10px;
+}
+
+body.sm-app-shell .sm-sidebar-search__input:focus {
+    border-color: rgba(96, 165, 250, .5);
+    background: rgba(255, 255, 255, .065);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, .14);
+}
+
+body.sm-app-shell .sm-sidebar-search__kbd {
+    right: 7px;
+    padding: 1px 4px;
+    border-radius: 4px;
+    font-size: 7px;
+}
+
+body.sm-app-shell .nav-sidebar > .nav-header {
+    padding: 15px 9px 5px;
+    color: var(--ui-sidebar-muted);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .08em;
+}
+
+body.sm-app-shell .nav-sidebar .nav-item > .nav-link {
+    min-height: 38px;
+    margin: 1px 0;
+    padding: 8px 9px;
+    border-radius: 7px;
+    color: var(--ui-sidebar-text) !important;
+    font-size: 11px;
+    font-weight: 500;
+    transform: none !important;
+}
+
+body.sm-app-shell .nav-sidebar > .nav-item > .nav-link > .nav-icon {
+    width: 24px !important;
+    height: auto !important;
+    margin-right: 5px !important;
+    color: #7f8da3 !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    font-size: 11px !important;
+}
+
+body.sm-app-shell .nav-sidebar .nav-link:hover {
+    color: #fff !important;
+    background: rgba(148, 163, 184, .09) !important;
+}
+
+body.sm-app-shell .nav-sidebar .nav-link:hover .nav-icon {
+    color: #a9c7ff !important;
+}
+
+body.sm-app-shell .nav-sidebar .nav-link.active {
+    color: #fff !important;
+    background: rgba(37, 99, 235, .26) !important;
+    box-shadow: inset 2px 0 0 #60a5fa !important;
+}
+
+body.sm-app-shell .nav-sidebar .nav-link.active .nav-icon {
+    color: #bfdbfe !important;
+}
+
+body.sm-app-shell .nav-sidebar .nav-treeview {
+    padding: 3px 0 4px 10px;
+}
+
+body.sm-app-shell .nav-sidebar .nav-treeview > .nav-item > .nav-link {
+    min-height: 34px;
+    padding: 7px 8px 7px 16px !important;
+    border-radius: 6px;
+    color: #98a5b7 !important;
+    font-size: 10px;
+}
+
+body.sm-app-shell .nav-sidebar .nav-treeview > .nav-item > .nav-link > .nav-icon {
+    width: 18px !important;
+    margin-right: 4px !important;
+    color: #66758a !important;
+    font-size: 9px !important;
+}
+
+body.sm-app-shell .nav-sidebar .nav-treeview > .nav-item > .nav-link.active {
+    background: rgba(37, 99, 235, .14) !important;
+    color: #dbeafe !important;
+    box-shadow: none !important;
+}
+
+/* Page heading */
+body.sm-app-shell .content-header,
+body.sm-app-shell .sm-page-heading.content-header {
+    padding: 20px 18px 10px !important;
+}
+
+body.sm-app-shell .sm-page-heading__inner {
+    gap: 14px;
+}
+
+body.sm-app-shell .sm-page-heading__identity {
+    gap: 10px;
+}
+
+body.sm-app-shell .sm-page-heading__icon {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    border-radius: 8px;
+    color: var(--ui-primary);
+    background: var(--ui-primary-soft);
+    border: 1px solid #dbeafe;
+    box-shadow: none;
+    font-size: 13px;
+}
+
+body.sm-app-shell .sm-page-heading__title,
+body.sm-app-shell .content-header h1 {
+    color: var(--ui-text);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+}
+
+body.sm-app-shell .content-header h1::after {
+    display: none !important;
+}
+
+body.sm-app-shell .sm-page-heading__subtitle {
+    margin-top: 3px;
+    color: var(--ui-muted);
+    font-size: 10px;
+}
+
+body.sm-app-shell .sm-page-heading__actions {
+    gap: 6px;
+}
+
+body.sm-app-shell .content.px-3,
+body.sm-app-shell .content-wrapper > .content {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    padding-bottom: 24px !important;
+}
+
+/* Cards and surfaces */
+body.sm-app-shell .card,
+body.sm-app-shell .enterprise-card,
+body.sm-app-shell .section-card,
+body.sm-app-shell .chart-card,
+body.sm-app-shell .summary-card,
+body.sm-app-shell .results-card,
+body.sm-app-shell .filter-card,
+body.sm-app-shell .dashboard-card,
+body.sm-app-shell .kpi-card,
+body.sm-app-shell .kpi,
+body.sm-app-shell .info-card,
+body.sm-app-shell .small-box,
+body.sm-app-shell .info-box {
+    border: 1px solid var(--ui-border) !important;
+    border-radius: var(--ui-radius) !important;
+    background: var(--ui-surface) !important;
+    box-shadow: var(--ui-shadow) !important;
+}
+
+body.sm-app-shell .card.sm-data-card,
+body.sm-app-shell .card.sm-form-card,
+body.sm-app-shell .card.sm-enhanced-card {
+    box-shadow: var(--ui-shadow) !important;
+}
+
+body.sm-app-shell .card-header,
+body.sm-app-shell .section-header {
+    min-height: 50px;
+    padding: 12px 15px !important;
+    background: #fff !important;
+    border-bottom: 1px solid var(--ui-border) !important;
+}
+
+body.sm-app-shell .card-body,
+body.sm-app-shell .section-body,
+body.sm-app-shell .ot-header-main {
+    padding: 16px !important;
+}
+
+body.sm-app-shell .card-footer {
+    padding: 11px 15px !important;
+    background: #fafbfc !important;
+    border-top: 1px solid var(--ui-border) !important;
+}
+
+body.sm-app-shell .card-title,
+body.sm-app-shell .section-title,
+body.sm-app-shell .sm-section-title {
+    color: var(--ui-text);
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0;
+}
+
+/* Home / dashboard */
+body.sm-app-shell .enterprise-header {
+    padding: 18px 0 16px !important;
+}
+
+body.sm-app-shell .enterprise-title {
+    color: var(--ui-text) !important;
+    font-size: 21px !important;
+    font-weight: 700 !important;
+    letter-spacing: -.02em !important;
+}
+
+body.sm-app-shell .enterprise-subtitle {
+    margin-top: 3px !important;
+    color: var(--ui-muted) !important;
+    font-size: 10px !important;
+}
+
+body.sm-app-shell .system-status {
+    padding: 5px 8px !important;
+    border-radius: 6px !important;
+    background: #fff !important;
+    border: 1px solid var(--ui-border) !important;
+    box-shadow: none !important;
+    font-size: 9px !important;
+}
+
+body.sm-app-shell .kpi-card,
+body.sm-app-shell .kpi {
+    min-height: 108px !important;
+    padding: 15px !important;
+    transition: border-color .15s ease, box-shadow .15s ease !important;
+}
+
+body.sm-app-shell .kpi-card:hover,
+body.sm-app-shell .kpi:hover {
+    transform: none !important;
+    border-color: var(--ui-border-strong) !important;
+    box-shadow: 0 2px 5px rgba(15, 23, 42, .06) !important;
+}
+
+body.sm-app-shell .kpi-label {
+    color: var(--ui-muted) !important;
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    letter-spacing: .03em !important;
+}
+
+body.sm-app-shell .kpi-value {
+    margin-top: 6px !important;
+    color: var(--ui-text) !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    letter-spacing: -.02em !important;
+}
+
+body.sm-app-shell .kpi-description,
+body.sm-app-shell .kpi-sub {
+    margin-top: 6px !important;
+    color: var(--ui-muted) !important;
+    font-size: 9px !important;
+}
+
+body.sm-app-shell .kpi-icon {
+    width: 34px !important;
+    height: 34px !important;
+    right: 14px !important;
+    top: 14px !important;
+    border-radius: 7px !important;
+    font-size: 13px !important;
+}
+
+body.sm-app-shell .dashboard-container {
+    padding: 18px 20px 34px !important;
+}
+
+body.sm-app-shell .dashboard-header,
+body.sm-app-shell .ot-header {
+    border: 1px solid var(--ui-border) !important;
+    border-radius: var(--ui-radius) !important;
+    background: #fff !important;
+    box-shadow: var(--ui-shadow) !important;
+}
+
+body.sm-app-shell .dashboard-header {
+    padding: 16px 18px !important;
+}
+
+body.sm-app-shell .dashboard-header::before {
+    display: none !important;
+}
+
+body.sm-app-shell .dashboard-header h1,
+body.sm-app-shell .dashboard-header h2 {
+    color: var(--ui-text) !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    letter-spacing: -.02em !important;
+}
+
+body.sm-app-shell .executive-summary {
+    border-left: 2px solid var(--ui-primary) !important;
+    border-radius: 6px !important;
+    background: #f8fafc !important;
+}
+
+/* Forms */
+body.sm-app-shell .form-control,
+body.sm-app-shell .custom-select,
+body.sm-app-shell .select2-container .select2-selection--single,
+body.sm-app-shell .select2-container--default .select2-selection--multiple {
+    min-height: 38px;
+    border: 1px solid var(--ui-border-strong) !important;
+    border-radius: 7px !important;
+    background: #fff !important;
+    color: var(--ui-text) !important;
+    box-shadow: none !important;
+    font-size: 11px !important;
+}
+
+body.sm-app-shell textarea.form-control {
+    min-height: 88px;
+}
+
+body.sm-app-shell .form-control:focus,
+body.sm-app-shell .custom-select:focus,
+body.sm-app-shell .select2-container--default.select2-container--focus .select2-selection--multiple,
+body.sm-app-shell .select2-container--default.select2-container--open .select2-selection--single {
+    border-color: #7da8f7 !important;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, .10) !important;
+}
+
+body.sm-app-shell .form-group > label,
+body.sm-app-shell .col-form-label {
+    margin-bottom: 5px;
+    color: #334155;
+    font-size: 10px;
+    font-weight: 650;
+}
+
+body.sm-app-shell .sm-filter-form,
+body.sm-app-shell .card.sm-filter-card {
+    border-radius: var(--ui-radius) !important;
+    background: #fff !important;
+    border: 1px solid var(--ui-border) !important;
+    box-shadow: none !important;
+}
+
+body.sm-app-shell .sm-filter-form {
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+/* Buttons */
+body.sm-app-shell .btn {
+    min-height: 36px;
+    padding: 7px 12px;
+    gap: 5px;
+    border-radius: 7px !important;
+    box-shadow: none !important;
+    font-size: 10px !important;
+    font-weight: 650 !important;
+    transform: none !important;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease !important;
+}
+
+body.sm-app-shell .btn:hover,
+body.sm-app-shell .btn:focus {
+    transform: none !important;
+}
+
+body.sm-app-shell .btn-primary,
+body.sm-app-shell .btn-enterprise {
+    color: #fff !important;
+    background: var(--ui-primary) !important;
+    border-color: var(--ui-primary) !important;
+}
+
+body.sm-app-shell .btn-primary:hover,
+body.sm-app-shell .btn-enterprise:hover {
+    background: var(--ui-primary-hover) !important;
+    border-color: var(--ui-primary-hover) !important;
+}
+
+body.sm-app-shell .btn-default,
+body.sm-app-shell .btn-light,
+body.sm-app-shell .btn-outline-enterprise,
+body.sm-app-shell .btn-outline-primary,
+body.sm-app-shell .btn-secondary {
+    background: #fff !important;
+    border-color: var(--ui-border-strong) !important;
+    color: #334155 !important;
+}
+
+body.sm-app-shell .btn-default:hover,
+body.sm-app-shell .btn-light:hover,
+body.sm-app-shell .btn-secondary:hover {
+    background: #f8fafc !important;
+    border-color: #b6c2d0 !important;
+    color: var(--ui-text) !important;
+}
+
+body.sm-app-shell .sm-icon-button,
+body.sm-app-shell .action-btn {
+    width: 32px !important;
+    min-width: 32px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 0 !important;
+    border-radius: 6px !important;
+}
+
+/* Tables */
+body.sm-app-shell .table,
+body.sm-app-shell .enterprise-table {
+    color: var(--ui-text-soft);
+    font-size: 10px !important;
+}
+
+body.sm-app-shell .table thead th,
+body.sm-app-shell .enterprise-table thead th,
+body.sm-app-shell .table.sm-table thead th,
+body.sm-app-shell .sm-data-card .table thead th {
+    padding: 10px 11px !important;
+    color: #536174 !important;
+    background: #f8fafc !important;
+    border-bottom: 1px solid var(--ui-border) !important;
+    font-size: 8px !important;
+    font-weight: 700 !important;
+    letter-spacing: .04em !important;
+}
+
+body.sm-app-shell .table td,
+body.sm-app-shell .enterprise-table tbody td,
+body.sm-app-shell .table.sm-table tbody td,
+body.sm-app-shell .sm-data-card .table tbody td {
+    padding: 10px 11px !important;
+    border-top: 1px solid #edf1f5 !important;
+}
+
+body.sm-app-shell .table-striped tbody tr:nth-of-type(odd),
+body.sm-app-shell .table tbody tr:nth-child(even),
+body.sm-app-shell .enterprise-table tbody tr:nth-child(even) {
+    background: rgba(248, 250, 252, .42) !important;
+}
+
+body.sm-app-shell .table-hover tbody tr:hover,
+body.sm-app-shell .table tbody tr:hover,
+body.sm-app-shell .enterprise-table tbody tr:hover {
+    background: #f6f9fc !important;
+}
+
+body.sm-app-shell .table-responsive {
+    border-radius: 0 0 var(--ui-radius) var(--ui-radius);
+}
+
+/* Status, badges and progress */
+body.sm-app-shell .badge,
+body.sm-app-shell .status-badge,
+body.sm-app-shell .enterprise-badge,
+body.sm-app-shell .badge-results,
+body.sm-app-shell .enterprise-status {
+    padding: 4px 7px !important;
+    border-radius: 6px !important;
+    font-size: 8px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+}
+
+body.sm-app-shell .progress,
+body.sm-app-shell .enterprise-progress {
+    height: 6px !important;
+    border-radius: 999px !important;
+}
+
+/* Menus / modals */
+body.sm-app-shell .dropdown-menu,
+body.sm-app-shell .user-menu > .dropdown-menu {
+    padding: 6px;
+    border: 1px solid var(--ui-border);
+    border-radius: var(--ui-radius) !important;
+    box-shadow: var(--ui-shadow-menu) !important;
+    animation: none !important;
+}
+
+body.sm-app-shell .sm-profile-card {
+    padding: 11px;
+    border-radius: 7px;
+    background: #f8fafc;
+}
+
+body.sm-app-shell .sm-profile-card__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+}
+
+body.sm-app-shell .modal-content {
+    border-radius: 10px !important;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, .16) !important;
+}
+
+body.sm-app-shell .modal-header {
+    padding: 14px 16px !important;
+}
+
+body.sm-app-shell .modal-body {
+    padding: 16px !important;
+}
+
+body.sm-app-shell .modal-footer {
+    padding: 11px 16px !important;
+    background: #fafbfc !important;
+}
+
+body.sm-app-shell .swal2-popup {
+    border-radius: 10px !important;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, .16) !important;
+}
+
+/* Footer / utilities */
+body.sm-app-shell .main-footer {
+    padding: 11px 18px;
+    color: var(--ui-muted);
+    background: #fff;
+    border-top: 1px solid var(--ui-border);
+    font-size: 10px;
+}
+
+body.sm-app-shell .sm-scroll-top {
+    right: 18px;
+    bottom: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #334155;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, .14);
+}
+
+body.sm-app-shell .sm-scroll-top:hover {
+    background: var(--ui-primary);
+}
+
+/* Desktop sidebar geometry */
+@media (min-width: 992px) {
+    body.sm-app-shell.sidebar-mini:not(.sidebar-collapse) .content-wrapper,
+    body.sm-app-shell.sidebar-mini:not(.sidebar-collapse) .main-footer,
+    body.sm-app-shell.sidebar-mini:not(.sidebar-collapse) .main-header {
+        margin-left: var(--ui-sidebar-width) !important;
+    }
+
+    body.sm-app-shell.sidebar-mini.sidebar-collapse .content-wrapper,
+    body.sm-app-shell.sidebar-mini.sidebar-collapse .main-footer,
+    body.sm-app-shell.sidebar-mini.sidebar-collapse .main-header {
+        margin-left: 4.6rem !important;
+    }
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    body.sm-app-shell .content-header,
+    body.sm-app-shell .sm-page-heading.content-header {
+        padding: 16px 13px 8px !important;
+    }
+
+    body.sm-app-shell .content.px-3,
+    body.sm-app-shell .content-wrapper > .content {
+        padding-left: 13px !important;
+        padding-right: 13px !important;
+    }
+
+    body.sm-app-shell .dashboard-container {
+        padding: 14px !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    body.sm-app-shell .sm-page-heading__title,
+    body.sm-app-shell .content-header h1,
+    body.sm-app-shell .enterprise-title {
+        font-size: 18px !important;
+    }
+
+    body.sm-app-shell .card-body,
+    body.sm-app-shell .section-body,
+    body.sm-app-shell .ot-header-main {
+        padding: 13px !important;
+    }
+
+    body.sm-app-shell .dashboard-header {
+        padding: 13px !important;
+    }
+
+    body.sm-app-shell .kpi-card,
+    body.sm-app-shell .kpi {
+        min-height: 96px !important;
+        padding: 13px !important;
+    }
+
+    body.sm-app-shell .kpi-value {
+        font-size: 21px !important;
+    }
+}

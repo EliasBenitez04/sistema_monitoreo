@@ -23,6 +23,9 @@
 
     @stack('third_party_stylesheets')
     @stack('page_css')
+
+    {{-- Final visual refinement layer: intentionally loaded last to normalize legacy screens. --}}
+    <link href="{{ asset('css/ui-refine.css') }}?v=20260918" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed sm-app-shell">
