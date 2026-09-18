@@ -1608,3 +1608,55 @@ body.sm-app-shell .alert {
         transition-duration: .01ms !important;
     }
 }
+
+
+/* SHARED STATES / TABLE TOOLBAR */
+.sm-empty-state {
+    padding: 34px 20px;
+    color: var(--sm-muted);
+    text-align: center;
+}
+
+.sm-empty-state i {
+    display: block;
+    margin-bottom: 8px;
+    color: #a7b2c1;
+    font-size: 22px;
+}
+
+.sm-table-search {
+    width: min(420px, 100%);
+}
+
+.sm-table-search .sm-search-group {
+    width: 100%;
+}
+
+.sm-form-card > form > .card-footer,
+.sm-detail-card > .card-footer {
+    gap: 6px;
+}
+
+body.sm-app-shell dl dt {
+    color: #334155;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+body.sm-app-shell dl dd {
+    margin-bottom: 10px;
+    color: var(--sm-text-secondary);
+    font-size: 10px;
+}
+
+/* Keep legacy module-local decoration subordinate to the shared shell. */
+body.sm-app-shell [class*="header-icon"],
+body.sm-app-shell [class*="title-icon"],
+body.sm-app-shell [class*="module-icon"],
+body.sm-app-shell [class*="lote-icon"] {
+    box-shadow: none !important;
+}
+
+body.sm-app-shell .rounded-lg {
+    border-radius: var(--sm-radius) !important;
+}
