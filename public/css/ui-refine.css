@@ -1915,3 +1915,121 @@ body.sm-app-shell #progressBarArticulos {
         min-height: 40px;
     }
 }
+
+
+/* =========================================================
+   NORMALIZACION DE MODULOS LEGACY 2026-09-18
+   Reduce decoracion local excesiva sin cambiar estructura ni logica.
+   ========================================================= */
+body.sm-app-shell .dashboard-stat,
+body.sm-app-shell .dashboard-card,
+body.sm-app-shell .process-card,
+body.sm-app-shell .import-module,
+body.sm-app-shell .import-container,
+body.sm-app-shell .resumen-card,
+body.sm-app-shell .severity-card {
+    border-color: var(--sm-border) !important;
+    border-radius: var(--sm-radius) !important;
+    box-shadow: var(--sm-shadow) !important;
+}
+
+body.sm-app-shell .dashboard-stat:hover,
+body.sm-app-shell .dashboard-card:hover,
+body.sm-app-shell .process-card:hover,
+body.sm-app-shell .resumen-card:hover,
+body.sm-app-shell .severity-card:hover,
+body.sm-app-shell .upload-zone:hover,
+body.sm-app-shell .upload-zone.dragover,
+body.sm-app-shell .btn-filter:hover,
+body.sm-app-shell .btn-dashboard-danger:hover,
+body.sm-app-shell .btn-import:hover,
+body.sm-app-shell .btn-import-blue:hover,
+body.sm-app-shell .btn-import-green:hover,
+body.sm-app-shell .btn-import-remisiones:hover,
+body.sm-app-shell .dashboard-card .btn:hover,
+body.sm-app-shell .process-card .btn:hover,
+body.sm-app-shell .action-group .btn:hover {
+    transform: none !important;
+}
+
+body.sm-app-shell .dashboard-stat:hover,
+body.sm-app-shell .dashboard-card:hover,
+body.sm-app-shell .process-card:hover,
+body.sm-app-shell .resumen-card:hover,
+body.sm-app-shell .severity-card:hover {
+    box-shadow: var(--sm-shadow) !important;
+}
+
+body.sm-app-shell .dashboard-stat::after {
+    display: none !important;
+}
+
+body.sm-app-shell .dashboard-header,
+body.sm-app-shell .process-header,
+body.sm-app-shell .dashboard-card .table thead th,
+body.sm-app-shell .process-card .table thead th,
+body.sm-app-shell .empty-state {
+    background-image: none !important;
+}
+
+body.sm-app-shell .dashboard-title-icon,
+body.sm-app-shell .page-heading-icon {
+    color: var(--sm-primary) !important;
+    background: var(--sm-primary-soft) !important;
+    background-image: none !important;
+    border: 1px solid #d8e4ed !important;
+    box-shadow: none !important;
+}
+
+body.sm-app-shell .btn-filter {
+    color: #fff !important;
+    background: var(--sm-primary) !important;
+    background-image: none !important;
+    border-color: var(--sm-primary) !important;
+    box-shadow: none !important;
+}
+
+body.sm-app-shell .btn-dashboard-danger,
+body.sm-app-shell .btn-generate,
+body.sm-app-shell .btn-start,
+body.sm-app-shell .btn-finish,
+body.sm-app-shell .btn-continue,
+body.sm-app-shell .btn-pdf,
+body.sm-app-shell .btn-import,
+body.sm-app-shell .btn-import-blue,
+body.sm-app-shell .btn-import-green,
+body.sm-app-shell .btn-import-remisiones {
+    box-shadow: none !important;
+}
+
+body.sm-app-shell .status-dot,
+body.sm-app-shell .system-status-dot {
+    box-shadow: none !important;
+}
+
+body.sm-app-shell .loading-box {
+    animation: none !important;
+}
+
+body.sm-app-shell .dashboard-stat .icon,
+body.sm-app-shell .dashboard-stat:hover .icon {
+    transform: none !important;
+}
+
+body.sm-app-shell .filter-title,
+body.sm-app-shell .filter-label,
+body.sm-app-shell .process-name,
+body.sm-app-shell .summary-title,
+body.sm-app-shell .status-badge {
+    letter-spacing: .025em !important;
+}
+
+@media (max-width: 767.98px) {
+    body.sm-app-shell .dashboard-stat,
+    body.sm-app-shell .dashboard-card,
+    body.sm-app-shell .process-card,
+    body.sm-app-shell .import-module,
+    body.sm-app-shell .import-container {
+        border-radius: 7px !important;
+    }
+}
