@@ -1,41 +1,36 @@
 @extends('layouts.app')
 
+@section('title', 'Nueva configuración de redistribución | ' . config('app.name'))
+
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1>
-                    Create Redistribucion Configs
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Nueva configuración"
+        subtitle="Defina los parámetros utilizados por el motor de redistribución."
+        icon="fas fa-sliders-h">
+        <a href="{{ route('redistribucion-configs.index') }}" class="btn btn-default">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </x-page-header>
 
     <div class="content px-3">
-
         @include('adminlte-templates::common.errors')
 
-        <div class="card">
-
-            {!! Form::open(['route' => 'redistribucionConfigs.store']) !!}
+        <div class="card sm-form-card">
+            {!! Form::open(['route' => 'redistribucion-configs.store', 'class' => 'confirm-submit']) !!}
 
             <div class="card-body">
-
                 <div class="row">
                     @include('redistribucion_configs.fields')
                 </div>
-
             </div>
 
-            <div class="card-footer">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('redistribucionConfigs.index') }}" class="btn btn-default"> Cancel </a>
+            <div class="card-footer d-flex justify-content-end">
+                <a href="{{ route('redistribucion-configs.index') }}" class="btn btn-default mr-2">Cancelar</a>
+                {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
             </div>
 
             {!! Form::close() !!}
-
         </div>
     </div>
 @endsection

@@ -1,66 +1,95 @@
-<div class="card-body p-0">
-    <div class="table-responsive">
-        <table class="table" id="redistribucion-configs-table">
-            <thead>
+<div class="table-responsive">
+    <table class="table table-hover" id="redistribucion-configs-table">
+        <thead>
             <tr>
-                <th>Metodo Demanda</th>
-                <th>Porcentaje Demanda</th>
-                <th>Stock Minimo</th>
-                <th>Stock Maximo</th>
-                <th>Venta Minima</th>
-                <th>Porcentaje Necesidad</th>
-                <th>Porcentaje Conservar Origen</th>
-                <th>Cantidad Minima</th>
-                <th>Cantidad Maxima</th>
-                <th>Dias Bloqueo</th>
-                <th>Bloquear Pendientes</th>
-                <th>Bloquear En Proceso</th>
-                <th>Bloquear Finalizados Recientes</th>
+                <th>Método demanda</th>
+                <th class="text-right">% demanda</th>
+                <th class="text-right">Stock mín.</th>
+                <th class="text-right">Stock máx.</th>
+                <th class="text-right">Venta mín.</th>
+                <th class="text-right">% necesidad</th>
+                <th class="text-right">% conservar origen</th>
+                <th class="text-right">Cantidad mín.</th>
+                <th class="text-right">Cantidad máx.</th>
+                <th class="text-right">Días bloqueo</th>
+                <th>Pendientes</th>
+                <th>En proceso</th>
+                <th>Finalizados recientes</th>
                 <th>Activo</th>
-                <th colspan="3">Action</th>
+                <th class="text-right">Acciones</th>
             </tr>
-            </thead>
-            <tbody>
-            @foreach($redistribucionConfigs as $redistribucionConfig)
+        </thead>
+        <tbody>
+            @forelse ($redistribucionConfigs as $redistribucionConfig)
                 <tr>
                     <td>{{ $redistribucionConfig->metodo_demanda }}</td>
-                    <td>{{ $redistribucionConfig->porcentaje_demanda }}</td>
-                    <td>{{ $redistribucionConfig->stock_minimo }}</td>
-                    <td>{{ $redistribucionConfig->stock_maximo }}</td>
-                    <td>{{ $redistribucionConfig->venta_minima }}</td>
-                    <td>{{ $redistribucionConfig->porcentaje_necesidad }}</td>
-                    <td>{{ $redistribucionConfig->porcentaje_conservar_origen }}</td>
-                    <td>{{ $redistribucionConfig->cantidad_minima }}</td>
-                    <td>{{ $redistribucionConfig->cantidad_maxima }}</td>
-                    <td>{{ $redistribucionConfig->dias_bloqueo }}</td>
-                    <td>{{ $redistribucionConfig->bloquear_pendientes }}</td>
-                    <td>{{ $redistribucionConfig->bloquear_en_proceso }}</td>
-                    <td>{{ $redistribucionConfig->bloquear_finalizados_recientes }}</td>
-                    <td>{{ $redistribucionConfig->activo }}</td>
-                    <td  style="width: 120px">
-                        {!! Form::open(['route' => ['redistribucionConfigs.destroy', $redistribucionConfig->id], 'method' => 'delete']) !!}
-                        <div class='btn-group'>
-                            <a href="{{ route('redistribucionConfigs.show', [$redistribucionConfig->id]) }}"
-                               class='btn btn-default btn-xs'>
-                                <i class="far fa-eye"></i>
-                            </a>
-                            <a href="{{ route('redistribucionConfigs.edit', [$redistribucionConfig->id]) }}"
-                               class='btn btn-default btn-xs'>
-                                <i class="far fa-edit"></i>
-                            </a>
-                            {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
-                        </div>
+                    <td class="text-right">{{ $redistribucionConfig->porcentaje_demanda }}</td>
+                    <td class="text-right">{{ $redistribucionConfig->stock_minimo }}</td>
+                    <td class="text-right">{{ $redistribucionConfig->stock_maximo }}</td>
+                    <td class="text-right">{{ $redistribucionConfig->venta_minima }}</td>
+                    <td class="text-right">{{ $redistribucionConfig->porcentaje_necesidad }}</td>
+                    <td class="text-right">{{ $redistribucionConfig->porcentaje_conservar_origen }}</td>
+                    <td class="text-right">{{ $redistribucionConfig->cantidad_minima }}</td>
+                    <td class="text-right">{{ $redistribucionConfig->cantidad_maxima }}</td>
+                    <td class="text-right">{{ $redistribucionConfig->dias_bloqueo }}</td>
+                    <td>
+                        <span class="badge {{ $redistribucionConfig->bloquear_pendientes ? 'badge-warning' : 'badge-light' }}">
+                            {{ $redistribucionConfig->bloquear_pendientes ? 'Sí' : 'No' }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge {{ $redistribucionConfig->bloquear_en_proceso ? 'badge-warning' : 'badge-light' }}">
+                            {{ $redistribucionConfig->bloquear_en_proceso ? 'Sí' : 'No' }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge {{ $redistribucionConfig->bloquear_finalizados_recientes ? 'badge-warning' : 'badge-light' }}">
+                            {{ $redistribucionConfig->bloquear_finalizados_recientes ? 'Sí' : 'No' }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge {{ $redistribucionConfig->activo ? 'badge-success' : 'badge-light' }}">
+                            {{ $redistribucionConfig->activo ? 'Activo' : 'Inactivo' }}
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        {!! Form::open([
+                            'route' => ['redistribucion-configs.destroy', $redistribucionConfig->id],
+                            'method' => 'delete',
+                            'class' => 'd-inline',
+                        ]) !!}
+                            <div class="d-inline-flex">
+                                <a href="{{ route('redistribucion-configs.show', $redistribucionConfig->id) }}"
+                                    class="btn btn-default sm-icon-button mr-1" title="Ver">
+                                    <i class="far fa-eye"></i>
+                                </a>
+                                <a href="{{ route('redistribucion-configs.edit', $redistribucionConfig->id) }}"
+                                    class="btn btn-primary sm-icon-button mr-1" title="Editar">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                {!! Form::button('<i class="far fa-trash-alt"></i>', [
+                                    'type' => 'button',
+                                    'class' => 'btn btn-danger sm-icon-button alert-delete',
+                                    'data-mensaje' => 'esta configuración',
+                                    'title' => 'Eliminar',
+                                ]) !!}
+                            </div>
                         {!! Form::close() !!}
                     </td>
                 </tr>
-            @endforeach
-            </tbody>
-        </table>
-    </div>
+            @empty
+                <tr>
+                    <td colspan="15" class="text-center text-muted py-4">
+                        No hay configuraciones registradas.
+                    </td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
+</div>
 
-    <div class="card-footer clearfix">
-        <div class="float-right">
-            @include('adminlte-templates::common.paginate', ['records' => $redistribucionConfigs])
-        </div>
+<div class="card-footer clearfix">
+    <div class="float-right">
+        @include('adminlte-templates::common.paginate', ['records' => $redistribucionConfigs])
     </div>
 </div>
