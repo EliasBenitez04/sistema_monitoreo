@@ -4,14 +4,12 @@
     
 
     <div class="container-fluid control-container">
-
-        ```
         {{-- =====================================================
      ENCABEZADO
 ====================================================== --}}
         <div class="mb-3">
             <h2 class="page-title">
-                <i class="fas fa-industry me-1"></i>
+                <i class="fas fa-industry mr-1"></i>
                 Control de Producto Terminado
             </h2>
 
@@ -1270,5 +1268,5 @@
     @endsection
 
 @push('page_css')
-    <link rel="stylesheet" href="{{ asset('css/modules/control-terminacion.css') }}?v=20260918-2">
+    <link rel="stylesheet" href="{{ asset('css/modules/control-terminacion.css') }}?v=20260918-3">
 @endpush
