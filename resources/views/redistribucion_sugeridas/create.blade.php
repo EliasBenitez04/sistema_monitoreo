@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
+@section('title', 'Nueva sugerencia de redistribución | ' . config('app.name'))
+
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1>
-                        Create Redistribucion Sugeridas
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Nueva sugerencia de redistribución"
+        subtitle="Registre la información requerida para la redistribución."
+        icon="fas fa-exchange-alt">
+        <a href="{{ route('RedistribucionSugeridas.index') }}" class="btn btn-default">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </x-page-header>
 
     <div class="content px-3">
 
         @include('adminlte-templates::common.errors')
 
-        <div class="card">
+        <div class="card sm-form-card">
 
             {!! Form::open(['route' => 'RedistribucionSugeridas.store']) !!}
 
@@ -29,7 +29,7 @@
 
             </div>
 
-            <div class="card-footer">
+            <div class="card-footer d-flex justify-content-end">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
                 <a href="{{ route('Redistribucion_Sugeridas.index') }}" class="btn btn-default"> Cancel </a>
             </div>
