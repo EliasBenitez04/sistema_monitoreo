@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#18202d">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', config('app.name'))</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -24,8 +23,7 @@
     @stack('third_party_stylesheets')
     @stack('page_css')
 
-    {{-- Final visual refinement layer: intentionally loaded last to normalize legacy screens. --}}
-    <link href="{{ asset('css/ui-refine.css') }}?v=20260918" rel="stylesheet">
+    <link href="{{ asset('css/ui-refine.css') }}?v=20260918-2" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed sm-app-shell">
@@ -33,52 +31,60 @@
         <nav class="main-header navbar navbar-expand navbar-white">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button" aria-label="Abrir o cerrar menú">
+                    <a class="nav-link sm-topbar-button" data-widget="pushmenu" href="#" role="button"
+                        aria-label="Abrir o cerrar menú">
                         <i class="fas fa-bars"></i>
                     </a>
                 </li>
-
-                <li class="nav-item sm-topbar-context">
+                <li class="nav-item d-none d-sm-flex sm-topbar-context">
                     <div>
-                        <div class="sm-topbar-context__title">Centro de operaciones</div>
-                        <div class="sm-topbar-context__subtitle">{{ config('app.name') }}</div>
+                        <div class="sm-topbar-context__title">{{ config('app.name') }}</div>
+                        <div class="sm-topbar-context__subtitle">Gestión operativa</div>
                     </div>
                 </li>
             </ul>
 
             <ul class="navbar-nav ml-auto align-items-center">
                 <li class="nav-item d-none d-md-block">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button" aria-label="Pantalla completa">
+                    <a class="nav-link sm-topbar-button" data-widget="fullscreen" href="#" role="button"
+                        aria-label="Pantalla completa">
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
 
                 <li class="nav-item dropdown user-menu">
-                    <a href="#" class="nav-link dropdown-toggle sm-user-trigger" data-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ asset('storage/logos/gts_logo.jpg') }}" class="sm-user-avatar" alt="Logo">
+                    <a href="#" class="nav-link dropdown-toggle sm-user-trigger" data-toggle="dropdown"
+                        aria-expanded="false">
+                        <span class="sm-user-avatar" aria-hidden="true">
+                            {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                        </span>
                         <span class="sm-user-copy text-left d-none d-sm-block">
                             <span class="sm-user-name d-block">{{ Auth::user()->name }}</span>
-                            <span class="sm-user-role d-block">Usuario del sistema</span>
+                            <span class="sm-user-role d-block">{{ Auth::user()->email }}</span>
                         </span>
-                        <i class="fas fa-chevron-down ml-1" style="font-size: 9px;"></i>
+                        <i class="fas fa-chevron-down sm-user-chevron"></i>
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-menu dropdown-menu-right sm-user-menu">
                         <div class="sm-profile-card">
-                            <img src="{{ asset('storage/logos/gts_logo.jpg') }}" class="sm-profile-card__avatar" alt="Logo">
+                            <span class="sm-profile-card__avatar" aria-hidden="true">
+                                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                            </span>
                             <div class="min-w-0">
                                 <p class="sm-profile-card__name">{{ Auth::user()->name }}</p>
-                                <p class="sm-profile-card__caption">Sesión activa · Acceso seguro</p>
+                                <p class="sm-profile-card__caption">{{ Auth::user()->email }}</p>
                             </div>
                         </div>
 
                         <div class="sm-profile-actions">
-                            <a href="{!! url('users/detail/perfil') !!}" class="btn btn-default">
-                                <i class="fas fa-user-cog mr-1"></i> Perfil
+                            <a href="{{ url('users/detail/perfil') }}" class="btn btn-default">
+                                <i class="fas fa-user-cog"></i>
+                                Perfil
                             </a>
                             <a href="#" class="btn btn-outline-danger"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt mr-1"></i> Salir
+                                <i class="fas fa-sign-out-alt"></i>
+                                Salir
                             </a>
                         </div>
 
@@ -97,10 +103,8 @@
         </main>
 
         <footer class="main-footer">
-            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                <span>© {{ date('Y') }} {{ config('app.name') }} · Plataforma operativa interna</span>
-                <span class="mt-1 mt-sm-0">Operación segura y trazable</span>
-            </div>
+            <span>© {{ date('Y') }} {{ config('app.name') }}</span>
+            <span class="float-right d-none d-sm-inline">Sistema interno</span>
         </footer>
     </div>
 
@@ -109,21 +113,27 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('form.confirm-submit').forEach(function(form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('form.confirm-submit').forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.dataset.confirmed === '1') {
+                        return;
+                    }
+
+                    event.preventDefault();
+
                     Swal.fire({
                         title: '¿Guardar los cambios?',
-                        text: 'Verifique la información antes de continuar.',
+                        text: 'Revise la información antes de continuar.',
                         icon: 'question',
                         showCancelButton: true,
-                        confirmButtonText: 'Sí, guardar',
+                        confirmButtonText: 'Guardar',
                         cancelButtonText: 'Cancelar',
                         reverseButtons: true,
                         confirmButtonColor: '#2563eb'
-                    }).then((result) => {
+                    }).then(function (result) {
                         if (result.isConfirmed) {
+                            form.dataset.confirmed = '1';
                             form.submit();
                         }
                     });
@@ -141,90 +151,97 @@
                 });
             @endif
         });
-    </script>
 
-    <script>
-        $(document).on('click', '.alert-delete', function(event) {
+        $(document).on('click', '.alert-delete, .alert-confirm', function (event) {
             event.preventDefault();
 
-            const form = $(this).closest('form');
-            const valor = $(this).data('mensaje') || 'este registro';
-            const accion = $(this).data('accion') || 'eliminar';
+            const trigger = $(this);
+            const form = trigger.closest('form');
+            const isDelete = trigger.hasClass('alert-delete');
+            const valor = trigger.data('mensaje') || 'este registro';
+            const accion = trigger.data('accion') || (isDelete ? 'eliminar' : 'confirmar');
 
             Swal.fire({
-                title: 'Confirmar acción',
+                title: isDelete ? 'Confirmar eliminación' : 'Confirmar acción',
                 text: `¿Desea ${accion} ${valor}?`,
-                icon: 'warning',
+                icon: isDelete ? 'warning' : 'question',
                 showCancelButton: true,
                 confirmButtonText: 'Confirmar',
                 cancelButtonText: 'Cancelar',
                 reverseButtons: true,
-                confirmButtonColor: '#dc2626'
-            }).then((result) => {
+                confirmButtonColor: isDelete ? '#dc2626' : '#2563eb'
+            }).then(function (result) {
                 if (result.isConfirmed) {
-                    form.submit();
+                    form.trigger('submit');
                 }
             });
         });
 
-        $(document).on('click', '.alert-confirm', function(event) {
-            event.preventDefault();
+        $(function () {
+            $('.select2:visible').each(function () {
+                const select = $(this);
 
-            const form = $(this).closest('form');
-            const valor = $(this).data('mensaje') || 'este registro';
-            const accion = $(this).data('accion') || 'confirmar';
-
-            Swal.fire({
-                title: 'Confirmar acción',
-                text: `¿Desea ${accion} ${valor}?`,
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'Confirmar',
-                cancelButtonText: 'Cancelar',
-                reverseButtons: true,
-                confirmButtonColor: '#2563eb'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    form.submit();
+                if (!select.hasClass('select2-hidden-accessible')) {
+                    select.select2({
+                        placeholder: select.data('placeholder') || 'Seleccione...',
+                        width: '100%',
+                        allowClear: true
+                    });
                 }
             });
-        });
-    </script>
 
-    <script>
-        $(document).ready(function() {
-            $('.buscar').on('keyup', function() {
-                const query = this.value;
-                const url = this.getAttribute('data-url');
+            const timers = new WeakMap();
+            const requests = new WeakMap();
 
-                if (!url) return;
+            document.querySelectorAll('.js-remote-search, .buscar, .buscar-fotos').forEach(function (input) {
+                input.addEventListener('input', function () {
+                    const field = this;
+                    const url = field.dataset.url;
+                    const param = field.dataset.param || field.name || 'buscar';
+                    const targetSelector = field.dataset.target ||
+                        (field.classList.contains('buscar-fotos') ? '.tabla-fotos-container' : '.tabla-container');
 
-                fetch(url + '?buscar=' + encodeURIComponent(query), {
-                        headers: { 'X-Requested-With': 'XMLHttpRequest' }
-                    })
-                    .then(res => res.text())
-                    .then(html => $('.tabla-container').html(html))
-                    .catch(err => console.error(err));
-            });
+                    if (!url || !targetSelector) {
+                        return;
+                    }
 
-            $('#form-busqueda-fotos .buscar-fotos').on('keyup', function() {
-                const query = this.value;
-                const url = this.getAttribute('data-url');
+                    window.clearTimeout(timers.get(field));
 
-                if (!url) return;
+                    timers.set(field, window.setTimeout(function () {
+                        const previousRequest = requests.get(field);
+                        if (previousRequest) {
+                            previousRequest.abort();
+                        }
 
-                fetch(url + '?search=' + encodeURIComponent(query), {
-                        headers: { 'X-Requested-With': 'XMLHttpRequest' }
-                    })
-                    .then(res => res.text())
-                    .then(html => $('.tabla-fotos-container').html(html))
-                    .catch(err => console.error(err));
-            });
+                        const controller = new AbortController();
+                        requests.set(field, controller);
 
-            $('.select2:visible').select2({
-                placeholder: 'Seleccione...',
-                width: '100%',
-                allowClear: true
+                        const separator = url.includes('?') ? '&' : '?';
+
+                        fetch(url + separator + encodeURIComponent(param) + '=' + encodeURIComponent(field.value), {
+                            headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                            signal: controller.signal
+                        })
+                            .then(function (response) {
+                                if (!response.ok) {
+                                    throw new Error('No se pudo actualizar la búsqueda.');
+                                }
+
+                                return response.text();
+                            })
+                            .then(function (html) {
+                                const target = document.querySelector(targetSelector);
+                                if (target) {
+                                    target.innerHTML = html;
+                                }
+                            })
+                            .catch(function (error) {
+                                if (error.name !== 'AbortError') {
+                                    console.error(error);
+                                }
+                            });
+                    }, 250));
+                });
             });
         });
     </script>
@@ -233,5 +250,4 @@
     @stack('page_scripts')
     @include('sweetalert::alert')
 </body>
-
 </html>
