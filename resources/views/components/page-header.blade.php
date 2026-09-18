@@ -9,9 +9,7 @@
         <div class="sm-page-heading__inner">
             <div class="sm-page-heading__identity">
                 @if ($icon)
-                    <span class="sm-page-heading__icon" aria-hidden="true">
-                        <i class="{{ $icon }}"></i>
-                    </span>
+                    <i class="{{ $icon }} sm-page-heading__lead-icon" aria-hidden="true"></i>
                 @endif
 
                 <div class="sm-page-heading__copy">
