@@ -1,14 +1,6 @@
 // Variables
 @import 'variables';
 
-// AdminLTE / Bootstrap base
+// AdminLTE / Bootstrap base.
+// La identidad visual del sistema se carga como CSS de aplicación después de este bundle.
 @import '~admin-lte/build/scss/adminlte';
-
-// Sistema Monitoreo enterprise UI overrides
-@import 'professional';
-
-// V3: interaction, accessibility and component refinements
-@import 'professional_v3';
-
-// V3: module-specific legacy normalization
-@import 'modules_v3';
