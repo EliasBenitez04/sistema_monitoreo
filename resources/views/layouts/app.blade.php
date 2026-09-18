@@ -23,7 +23,7 @@
     @stack('third_party_stylesheets')
     @stack('page_css')
 
-    <link href="{{ asset('css/ui-refine.css') }}?v=20260918-2" rel="stylesheet">
+    <link href="{{ asset('css/ui-refine.css') }}?v=20260918-3" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed sm-app-shell">
