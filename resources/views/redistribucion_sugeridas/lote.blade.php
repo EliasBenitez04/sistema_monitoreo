@@ -1,80 +1,33 @@
 @extends('layouts.app')
 
+@section('title', 'Detalle de lote | ' . config('app.name'))
+
 @section('content')
-    <div class="redistribucion-lote-page">
+    <x-page-header
+        :title="'Lote ' . $lote->numero_lote"
+        subtitle="Transferencias agrupadas para procesamiento de redistribución."
+        icon="fas fa-layer-group">
+        @switch($lote->estado)
+            @case('GENERADO')
+                <span class="badge badge-warning">Generado</span>
+            @break
+            @case('EN PROCESO')
+                <span class="badge badge-info">En proceso</span>
+            @break
+            @case('FINALIZADO')
+                <span class="badge badge-success">Finalizado</span>
+            @break
+            @default
+                <span class="badge badge-light">{{ $lote->estado }}</span>
+        @endswitch
+        <a href="{{ route('RedistribucionSugeridas.lotes') }}" class="btn btn-default">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </x-page-header>
 
-        <div class="container-fluid">
-
-            {{-- ===================================================== --}}
-            {{-- HEADER --}}
-            {{-- ===================================================== --}}
-
-            <div class="lote-header mb-4">
-
-                <div class="lote-header-left">
-
-                    <div class="lote-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-
-                    <div>
-
-                        <span>
-                            LOTE DE REDISTRIBUCIÓN
-                        </span>
-
-                        <h3>
-                            {{ $lote->numero_lote }}
-                        </h3>
-
-                        <p>
-                            Transferencias masivas agrupadas para procesamiento
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <div>
-
-                    @switch($lote->estado)
-                        @case('GENERADO')
-                            <span class="lote-status generated">
-                                <span></span>
-                                GENERADO
-                            </span>
-                        @break
-
-                        @case('EN PROCESO')
-                            <span class="lote-status process">
-                                <span></span>
-                                EN PROCESO
-                            </span>
-                        @break
-
-                        @case('FINALIZADO')
-                            <span class="lote-status finished">
-                                <span></span>
-                                FINALIZADO
-                            </span>
-                        @break
-
-                        @default
-                            <span class="lote-status default">
-                                <span></span>
-                                {{ $lote->estado }}
-                            </span>
-                    @endswitch
-                    <a href="{{ route('RedistribucionSugeridas.lotes') }}" class="btn btn-primary lote-btn">
-                        <i class="fas fa-arrow-left"></i>
-                        Volver
-                    </a>
-
-                </div>
-
-            </div>
-
-
+    <div class="content px-3 redistribucion-lote-page">
+        <div class="container-fluid px-0">
             {{-- ===================================================== --}}
             {{-- KPIs --}}
             {{-- ===================================================== --}}
