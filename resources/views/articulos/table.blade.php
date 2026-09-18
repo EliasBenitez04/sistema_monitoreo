@@ -1,93 +1,63 @@
-<!DOCTYPE html>
+<div class="sm-table-toolbar">
+    <div class="row align-items-end">
+        <div class="col-lg-4 col-md-6 mb-3 mb-lg-0">
+            <form method="GET" action="{{ route('articulos.index') }}">
+                <label for="ordenar-articulos">Ordenar por precio</label>
+                <div class="input-group">
+                    <select name="ordenar" id="ordenar-articulos" class="form-control">
+                        <option value="">Sin orden específico</option>
+                        <option value="asc" {{ request('ordenar') == 'asc' ? 'selected' : '' }}>Menor a mayor</option>
+                        <option value="desc" {{ request('ordenar') == 'desc' ? 'selected' : '' }}>Mayor a menor</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-outline-primary">Aplicar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-<html lang="es">
+        <div class="col-lg-4 col-md-6 mb-3 mb-lg-0">
+            <form method="GET" action="{{ route('articulos.index') }}">
+                <label for="buscar-articulos">Buscar producto</label>
+                <div class="input-group">
+                    <input type="text" name="buscar" id="buscar-articulos" class="form-control"
+                        placeholder="Código o descripción" value="{{ request('buscar') }}">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-outline-primary">
+                            <i class="fas fa-search"></i>
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artículos</title>
-    
-</head>
-
-<body>
-
-    <div class="card-body p-0">
-        <div class="table-responsive">
-            <div class="card-header">
-                <div class="row align-items-center">
-
-                    <!-- Formulario de Filtro por Precio -->
-                    <div class="table-responsive">
-                        <div class="card-header">
-                            <div class="row align-items-center">
-
-                                <!-- FILTRO ORDEN PRECIO -->
-                                <div class="col-md-4 mb-2">
-                                    <form method="GET" action="{{ route('articulos.index') }}">
-                                        <label>Ordenar por Precio:</label>
-
-                                        <div class="d-flex">
-                                            <select name="ordenar" class="form-control mr-2">
-                                                <option value="">Seleccionar</option>
-
-                                                <option value="asc"
-                                                    {{ request('ordenar') == 'asc' ? 'selected' : '' }}>
-                                                    Menor a Mayor
-                                                </option>
-
-                                                <option value="desc"
-                                                    {{ request('ordenar') == 'desc' ? 'selected' : '' }}>
-                                                    Mayor a Menor
-                                                </option>
-                                            </select>
-
-                                            <button type="submit" class="btn btn-primary">
-                                                Filtrar
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <!-- BUSCADOR PRODUCTOS -->
-                                <div class="col-md-4 mb-2">
-                                    <form method="GET" action="{{ route('articulos.index') }}">
-                                        <label>Buscar Producto:</label>
-
-                                        <div class="d-flex">
-                                            <input type="text" name="buscar" class="form-control mr-2"
-                                                placeholder="Código o descripción..." value="{{ request('buscar') }}">
-
-                                            <button type="submit" class="btn btn-primary">
-                                                Buscar
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                                @can('stocks importar')
-                                    <!-- IMPORTAR EXCEL -->
-                                    <div class="col-md-4 text-md-right">
-                                        <form id="import-form" enctype="multipart/form-data">
-                                            @csrf
-                                            <input type="file" name="archivo" id="file" class="form-control mb-2"
-                                                required>
-                                            <button type="button" id="btn-import" class="btn btn-success">
-                                                <i class="fas fa-file-excel"></i> Importar Excel
-                                            </button>
-
-                                            <input type="file" id="excelFile" accept=".xlsx,.xls,.csv"
-                                                style="display:none;">
-                                        </form>
-                                    </div>
-                                @endcan
-
-                            </div>
+        @can('stocks importar')
+            <div class="col-lg-4 col-md-12">
+                <form id="import-form" enctype="multipart/form-data">
+                    @csrf
+                    <label for="file">Importar catálogo</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" name="archivo" id="file" class="custom-file-input"
+                                accept=".xlsx,.xls,.csv" required>
+                            <label class="custom-file-label" for="file">Seleccionar archivo</label>
+                        </div>
+                        <div class="input-group-append">
+                            <button type="button" id="btn-import" class="btn btn-success">
+                                <i class="fas fa-file-excel"></i>
+                                Importar
+                            </button>
                         </div>
                     </div>
-
-                </div>
+                </form>
             </div>
+        @endcan
+    </div>
+</div>
 
-            <table class="table table-striped table-bordered table-hover" id="articulos-table">
+<div class="table-responsive">
+<table class="table table-striped table-bordered table-hover" id="articulos-table">
                 <thead class="thead-dark">
                     <tr>
                         <th class="producto text-center" style="width:5%;">#</th>
@@ -147,9 +117,8 @@
                 {{ $articulos->links() }}
             </div>
         </div>
-    </div>
 
-    <div id="loadingOverlayArticulos">
+<div id="loadingOverlayArticulos">
         <div class="loading-box">
 
             <div class="icon-circle">
@@ -167,13 +136,6 @@
 
         </div>
     </div>
-
-    
-</body>
-
-</html>
-<!-- REEMPLAZÁ TODO TU SCRIPT POR ESTE -->
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
 
@@ -298,5 +260,5 @@
 </script>
 
 @push('page_css')
-    <link rel="stylesheet" href="{{ asset('css/modules/articulos-table.css') }}?v=20260918-2">
+    <link rel="stylesheet" href="{{ asset('css/modules/articulos-table.css') }}?v=20260918-3">
 @endpush
