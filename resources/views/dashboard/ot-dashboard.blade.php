@@ -1,73 +1,22 @@
 @extends('layouts.app')
 
+@section('title', 'Dashboard de Órdenes de Trabajo | ' . config('app.name'))
+
 @section('content')
+    <x-page-header
+        title="Dashboard de Órdenes de Trabajo"
+        subtitle="Monitoreo general de producción, procesos, tiempos y atrasos."
+        icon="fas fa-chart-line">
+        <a href="{{ route('dashboard.ot-atrasadas') }}" class="btn btn-outline-danger">
+            <i class="fas fa-exclamation-triangle"></i>
+            Ver OT atrasadas
+        </a>
+    </x-page-header>
 
-
-
-
-<div class="ot-dashboard">
-
-
-    {{-- =========================================================
-         HEADER
-    ========================================================== --}}
-
-    <div class="dashboard-header">
-
-        <div class="d-flex justify-content-between align-items-center flex-wrap">
-
-            <div class="dashboard-title-wrapper">
-
-                <div class="dashboard-title-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-
-                <div>
-
-                    <h1 class="dashboard-title">
-                        Dashboard de Órdenes de Trabajo
-                    </h1>
-
-                    <div class="dashboard-subtitle">
-                        Monitoreo general de producción, procesos, tiempos y atrasos
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="d-flex align-items-center mt-3 mt-md-0">
-
-                <div class="dashboard-status mr-3">
-
-                    <span class="dashboard-status-dot"></span>
-
-                    Monitoreo activo
-
-                </div>
-
-
-                <a
-                    href="{{ route('dashboard.ot-atrasadas') }}"
-                    class="btn btn-dashboard-danger">
-
-                    <i class="fas fa-exclamation-triangle mr-1"></i>
-
-                    Ver OT atrasadas
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    {{-- =========================================================
-         FILTROS
-    ========================================================== --}}
+    <div class="content px-3 ot-dashboard">
+        {{-- =========================================================
+             FILTROS
+        ========================================================== --}}
 
     <div class="filter-card">
 
