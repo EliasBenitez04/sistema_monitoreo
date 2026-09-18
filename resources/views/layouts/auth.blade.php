@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="theme-color" content="#18202d">
+    <meta name="theme-color" content="#18212f">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', config('app.name'))</title>
@@ -18,34 +18,26 @@
         crossorigin="anonymous">
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/ui-refine.css') }}?v=20260918-2" rel="stylesheet">
+    <link href="{{ asset('css/ui-refine.css') }}?v=20260918-3" rel="stylesheet">
 </head>
 <body class="sm-auth-page">
     <div class="sm-auth-shell">
-        <aside class="sm-auth-brand">
-            <a href="{{ url('/') }}" class="sm-auth-brand__logo">
-                <img src="{{ asset('storage/logos/gts_logo.jpg') }}" alt="{{ config('app.name') }}">
-                <span>{{ config('app.name') }}</span>
-            </a>
-
-            <div class="sm-auth-brand__copy">
-                <span class="sm-auth-eyebrow">Sistema interno</span>
-                <h1>Gestión clara, sin ruido.</h1>
-                <p>Acceda a los módulos operativos, seguimiento y administración desde un único entorno.</p>
-            </div>
-
-            <small>Acceso exclusivo para personal autorizado</small>
-        </aside>
-
         <main class="sm-auth-main">
-            <div class="sm-auth-card">
-                <div class="sm-auth-mobile-brand">
+            <section class="sm-auth-card" aria-labelledby="auth-title">
+                <div class="sm-auth-brand-header">
                     <img src="{{ asset('storage/logos/gts_logo.jpg') }}" alt="{{ config('app.name') }}">
-                    <span>{{ config('app.name') }}</span>
+                    <div>
+                        <strong>{{ config('app.name') }}</strong>
+                        <span>Acceso al sistema interno</span>
+                    </div>
                 </div>
 
                 @yield('content')
-            </div>
+
+                <p class="sm-auth-meta">
+                    Acceso exclusivo para personal autorizado
+                </p>
+            </section>
         </main>
     </div>
 
