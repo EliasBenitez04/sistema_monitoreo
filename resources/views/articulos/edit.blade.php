@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
+@section('title', 'Editar artículo | ' . config('app.name'))
+
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1>
-                        Editar Articulos
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Editar artículo"
+        subtitle="Actualice la información del artículo."
+        icon="fas fa-box-open">
+        <a href="{{ route('articulos.index') }}" class="btn btn-default">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </x-page-header>
 
     <div class="content px-3">
 
         @include('adminlte-templates::common.errors')
 
-        <div class="card">
+        <div class="card sm-form-card">
 
             {!! Form::model($articulo, [
                 'route' => ['articulos.update', $articulo->id_articulo],
@@ -37,9 +37,9 @@
                 </div>
             </div>
 
-            <div class="card-footer">
+            <div class="card-footer d-flex justify-content-end">
                 {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('articulos.index') }}" class="btn btn-default"> Cancelar </a>
+                <a href="{{ route('articulos.index') }}" class="btn btn-default ml-2">Cancelar</a>
             </div>
 
             {!! Form::close() !!}
