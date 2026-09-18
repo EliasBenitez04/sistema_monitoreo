@@ -1,4 +1,6 @@
 @extends('layouts.app')
+
+@section('title', 'Dashboard logística | ' . config('app.name'))
 @section('content')
     <div class="container-fluid py-3">
         {{-- ========================================================= --}}
