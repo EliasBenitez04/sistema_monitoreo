@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
+@section('title', 'Nueva carga de ventas y stock | ' . config('app.name'))
+
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1>
-                    Create Stock Ventas Sucursales
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Nueva carga de ventas y stock"
+        subtitle="Registre una nueva carga de información por sucursal."
+        icon="fas fa-chart-line">
+        <a href="{{ route('stock_ventas_sucursales.index') }}" class="btn btn-default">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </x-page-header>
 
     <div class="content px-3">
 
         @include('adminlte-templates::common.errors')
 
-        <div class="card">
+        <div class="card sm-form-card">
 
             {!! Form::open(['route' => 'stock_ventas_sucursales.store']) !!}
 
@@ -29,7 +29,7 @@
 
             </div>
 
-            <div class="card-footer">
+            <div class="card-footer d-flex justify-content-end">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
                 <a href="{{ route('stock_ventas_sucursales.index') }}" class="btn btn-default"> Cancel </a>
             </div>
