@@ -1,25 +1,20 @@
 @extends('layouts.app')
 
+@section('title', 'Detalle del artículo | ' . config('app.name'))
+
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>
-                        @lang('models/articulos.singular') @lang('crud.detail')
-                    </h1>
-                </div>
-                <div class="col-sm-6">
-                    <a class="btn btn-default float-right" href="{{ route('articulos.index') }}">
-                        @lang('crud.back')
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Detalle del artículo"
+        subtitle="Información registrada del artículo."
+        icon="fas fa-box-open">
+        <a href="{{ route('articulos.index') }}" class="btn btn-default">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </x-page-header>
 
     <div class="content px-3">
-        <div class="card">
+        <div class="card sm-detail-card">
             <div class="card-body">
                 <div class="row">
                     @include('articulos.show_fields')
