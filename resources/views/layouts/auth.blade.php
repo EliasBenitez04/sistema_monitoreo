@@ -18,7 +18,7 @@
         crossorigin="anonymous">
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/ui-refine.css') }}?v=20260918-3" rel="stylesheet">
+    <link href="{{ asset('css/ui-refine.css') }}?v=20260918-4" rel="stylesheet">
 </head>
 <body class="sm-auth-page">
     <div class="sm-auth-shell">
