@@ -5,27 +5,27 @@
  */
 
 :root {
-    --sm-primary: #2563eb;
-    --sm-primary-dark: #1d4ed8;
-    --sm-primary-soft: #eff6ff;
+    --sm-primary: #315f8c;
+    --sm-primary-dark: #244b70;
+    --sm-primary-soft: #eef4f8;
     --sm-success: #15803d;
     --sm-warning: #b45309;
     --sm-danger: #c62828;
     --sm-info: #0e7490;
-    --sm-sidebar: #18202d;
-    --sm-sidebar-hover: #222c3a;
-    --sm-bg: #f5f7fa;
+    --sm-sidebar: #1f2937;
+    --sm-sidebar-hover: #293548;
+    --sm-bg: #f6f7f9;
     --sm-surface: #ffffff;
     --sm-surface-soft: #f8fafc;
-    --sm-border: #e3e8ef;
-    --sm-border-strong: #cbd5e1;
+    --sm-border: #e1e6eb;
+    --sm-border-strong: #c6ced8;
     --sm-text: #182230;
     --sm-text-secondary: #475569;
     --sm-muted: #6b778c;
-    --sm-radius: 9px;
-    --sm-radius-sm: 7px;
-    --sm-shadow: 0 1px 2px rgba(15, 23, 42, .04), 0 4px 12px rgba(15, 23, 42, .035);
-    --sm-shadow-popover: 0 14px 36px rgba(15, 23, 42, .12);
+    --sm-radius: 8px;
+    --sm-radius-sm: 6px;
+    --sm-shadow: 0 1px 3px rgba(15, 23, 42, .06);
+    --sm-shadow-popover: 0 10px 24px rgba(15, 23, 42, .12);
     --sm-sidebar-width: 248px;
 }
 
@@ -45,7 +45,7 @@ body,
 
 body {
     color: var(--sm-text-secondary);
-    font-size: 13px;
+    font-size: 14px;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -105,7 +105,7 @@ body.sm-app-shell .main-header.navbar {
 
 .sm-topbar-context__title {
     color: var(--sm-text);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     line-height: 1.15;
 }
@@ -113,7 +113,7 @@ body.sm-app-shell .main-header.navbar {
 .sm-topbar-context__subtitle {
     margin-top: 2px;
     color: var(--sm-muted);
-    font-size: 9px;
+    font-size: 13px;
 }
 
 .sm-user-trigger {
@@ -146,14 +146,14 @@ body.sm-app-shell .main-header.navbar {
     width: 30px;
     height: 30px;
     border-radius: 7px;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .sm-user-name {
     max-width: 190px;
     overflow: hidden;
     color: var(--sm-text);
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     line-height: 1.2;
     text-overflow: ellipsis;
@@ -164,7 +164,7 @@ body.sm-app-shell .main-header.navbar {
     max-width: 190px;
     overflow: hidden;
     color: var(--sm-muted);
-    font-size: 9px;
+    font-size: 13px;
     line-height: 1.2;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -172,7 +172,7 @@ body.sm-app-shell .main-header.navbar {
 
 .sm-user-chevron {
     color: #94a3b8;
-    font-size: 8px;
+    font-size: 13px;
 }
 
 .sm-user-menu {
@@ -198,14 +198,14 @@ body.sm-app-shell .main-header.navbar {
 .sm-profile-card__name {
     margin: 0;
     color: var(--sm-text);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
 }
 
 .sm-profile-card__caption {
     margin: 2px 0 0;
     color: var(--sm-muted);
-    font-size: 9px;
+    font-size: 13px;
 }
 
 .sm-profile-actions {
@@ -255,7 +255,7 @@ body.sm-app-shell .sm-brand-logo {
     display: block;
     overflow: hidden;
     color: #f8fafc;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -265,7 +265,7 @@ body.sm-app-shell .sm-brand-logo {
     display: block;
     margin-top: 2px;
     color: #8090a5;
-    font-size: 8px;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: .05em;
     text-transform: uppercase;
@@ -291,7 +291,7 @@ body.sm-app-shell .sidebar {
     left: 11px;
     z-index: 2;
     color: #708096;
-    font-size: 10px;
+    font-size: 13px;
     transform: translateY(-50%);
 }
 
@@ -304,7 +304,7 @@ body.sm-app-shell .sidebar {
     border: 1px solid rgba(148, 163, 184, .13);
     border-radius: 7px;
     outline: none;
-    font-size: 10px;
+    font-size: 13px;
 }
 
 .sm-sidebar-search__input::placeholder {
@@ -321,7 +321,7 @@ body.sm-app-shell .sidebar {
     display: none;
     padding: 10px 6px 2px;
     color: #718096;
-    font-size: 9px;
+    font-size: 13px;
     text-align: center;
 }
 
@@ -332,7 +332,7 @@ body.sm-app-shell .sidebar {
 .nav-sidebar > .nav-header {
     padding: 15px 9px 5px !important;
     color: #718096 !important;
-    font-size: 8px !important;
+    font-size: 13px !important;
     font-weight: 700 !important;
     letter-spacing: .08em;
 }
@@ -345,7 +345,7 @@ body.sm-app-shell .sidebar {
     background: transparent !important;
     border-radius: 7px !important;
     box-shadow: none !important;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 500;
     transition: background-color .14s ease, color .14s ease;
 }
@@ -358,7 +358,7 @@ body.sm-app-shell .sidebar {
     color: #7f8da3 !important;
     background: transparent !important;
     border-radius: 0 !important;
-    font-size: 11px !important;
+    font-size: 13px !important;
 }
 
 .nav-sidebar .nav-link:hover {
@@ -389,7 +389,7 @@ body.sm-app-shell .sidebar {
     padding: 7px 8px 7px 15px !important;
     color: #97a5b7 !important;
     border-radius: 6px !important;
-    font-size: 10px;
+    font-size: 13px;
 }
 
 .nav-sidebar .nav-treeview > .nav-item > .nav-link.active {
@@ -402,7 +402,7 @@ body.sm-app-shell .sidebar {
     width: 17px !important;
     margin-right: 4px !important;
     color: #66758a !important;
-    font-size: 9px !important;
+    font-size: 13px !important;
 }
 
 .nav-sidebar .nav-item.sm-menu-hidden,
@@ -441,7 +441,7 @@ body.sm-app-shell .sm-page-heading.content-header {
     background: var(--sm-primary-soft);
     border: 1px solid #dbeafe;
     border-radius: 7px;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .sm-page-heading__copy {
@@ -465,7 +465,7 @@ body.sm-app-shell .content-header h1::after {
 .sm-page-heading__subtitle {
     margin: 3px 0 0;
     color: var(--sm-muted);
-    font-size: 10px;
+    font-size: 13px;
     line-height: 1.45;
 }
 
@@ -489,7 +489,7 @@ body.sm-app-shell .main-footer {
     color: var(--sm-muted);
     background: #fff;
     border-top: 1px solid var(--sm-border);
-    font-size: 9px;
+    font-size: 13px;
 }
 
 /* CARDS */
@@ -550,7 +550,7 @@ body.sm-app-shell .card-title,
 body.sm-app-shell .section-title,
 body.sm-app-shell .enterprise-card-title {
     color: var(--sm-text) !important;
-    font-size: 12px !important;
+    font-size: 13px !important;
     font-weight: 700 !important;
     letter-spacing: 0 !important;
 }
@@ -558,7 +558,7 @@ body.sm-app-shell .enterprise-card-title {
 body.sm-app-shell .enterprise-card-subtitle {
     margin-top: 2px;
     color: var(--sm-muted) !important;
-    font-size: 9px !important;
+    font-size: 13px !important;
 }
 
 body.sm-app-shell .card-body,
@@ -590,15 +590,15 @@ body.sm-app-shell .enterprise-table-footer {
 /* BUTTONS */
 body.sm-app-shell .btn,
 .sm-auth-page .btn {
-    min-height: 36px;
-    padding: 7px 12px;
+    min-height: 38px;
+    padding: 8px 13px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
     border-radius: 7px !important;
     box-shadow: none !important;
-    font-size: 10px !important;
+    font-size: 13px !important;
     font-weight: 650 !important;
     line-height: 1.2;
     transform: none !important;
@@ -608,7 +608,7 @@ body.sm-app-shell .btn-lg,
 .sm-auth-page .btn-lg {
     min-height: 40px;
     padding: 9px 14px;
-    font-size: 11px !important;
+    font-size: 13px !important;
 }
 
 body.sm-app-shell .btn-primary,
@@ -688,13 +688,13 @@ body.sm-app-shell .custom-select,
 .sm-auth-page .form-control,
 body.sm-app-shell .select2-container .select2-selection--single,
 body.sm-app-shell .select2-container--default .select2-selection--multiple {
-    min-height: 38px;
+    min-height: 40px;
     color: var(--sm-text) !important;
     background: #fff !important;
     border: 1px solid var(--sm-border-strong) !important;
     border-radius: 7px !important;
     box-shadow: none !important;
-    font-size: 11px !important;
+    font-size: 13px !important;
 }
 
 body.sm-app-shell textarea.form-control {
@@ -715,7 +715,7 @@ body.sm-app-shell .col-form-label,
 .sm-auth-page label {
     margin-bottom: 5px;
     color: #334155;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 650;
 }
 
@@ -724,7 +724,7 @@ body.sm-app-shell .input-group-text,
     color: #64748b;
     background: #f8fafc;
     border-color: var(--sm-border-strong);
-    font-size: 10px;
+    font-size: 13px;
 }
 
 body.sm-app-shell .select2-container--default .select2-selection--single .select2-selection__rendered {
@@ -732,7 +732,7 @@ body.sm-app-shell .select2-container--default .select2-selection--single .select
     padding-left: 10px;
     color: var(--sm-text);
     line-height: 36px;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 body.sm-app-shell .select2-container--default .select2-selection--single .select2-selection__arrow {
@@ -775,18 +775,18 @@ body.sm-app-shell .card.sm-filter-card {
     color: var(--sm-primary) !important;
     background: var(--sm-primary-soft) !important;
     border-radius: 6px !important;
-    font-size: 11px !important;
+    font-size: 13px !important;
 }
 
 .form-section-title h6 {
     color: var(--sm-text) !important;
-    font-size: 11px !important;
+    font-size: 13px !important;
     font-weight: 700 !important;
 }
 
 .form-section-title small {
     color: var(--sm-muted) !important;
-    font-size: 9px !important;
+    font-size: 13px !important;
 }
 
 .modern-input {
@@ -800,7 +800,7 @@ body.sm-app-shell .table,
 body.sm-app-shell .enterprise-table {
     margin-bottom: 0;
     color: var(--sm-text-secondary);
-    font-size: 10px !important;
+    font-size: 13px !important;
     font-variant-numeric: tabular-nums;
 }
 
@@ -812,7 +812,7 @@ body.sm-app-shell .sm-data-card .table thead th {
     background: #f8fafc !important;
     border-top: 0 !important;
     border-bottom: 1px solid var(--sm-border) !important;
-    font-size: 8px !important;
+    font-size: 13px !important;
     font-weight: 700 !important;
     letter-spacing: .045em !important;
     text-transform: uppercase;
@@ -884,7 +884,7 @@ body.sm-app-shell .cliente-id {
     height: 28px !important;
     border-radius: 6px !important;
     background: #f1f5f9 !important;
-    font-size: 10px !important;
+    font-size: 13px !important;
 }
 
 body.sm-app-shell .cliente-actions .btn:hover,
@@ -907,7 +907,7 @@ body.sm-app-shell .enterprise-status,
 body.sm-app-shell .badge-enterprise {
     padding: 4px 7px !important;
     border-radius: 6px !important;
-    font-size: 8px !important;
+    font-size: 13px !important;
     font-weight: 700 !important;
     letter-spacing: 0 !important;
     text-transform: none !important;
@@ -989,7 +989,7 @@ body.sm-app-shell .enterprise-title {
 body.sm-app-shell .dashboard-header p,
 body.sm-app-shell .enterprise-subtitle {
     color: var(--sm-muted) !important;
-    font-size: 10px !important;
+    font-size: 13px !important;
 }
 
 body.sm-app-shell .kpi,
@@ -1008,7 +1008,7 @@ body.sm-app-shell .kpi-card:hover {
 
 body.sm-app-shell .kpi-label {
     color: var(--sm-muted) !important;
-    font-size: 8px !important;
+    font-size: 13px !important;
     font-weight: 700 !important;
     letter-spacing: .04em !important;
 }
@@ -1025,7 +1025,7 @@ body.sm-app-shell .kpi-description,
 body.sm-app-shell .kpi-sub {
     margin-top: 5px !important;
     color: var(--sm-muted) !important;
-    font-size: 9px !important;
+    font-size: 13px !important;
 }
 
 body.sm-app-shell .kpi-icon {
@@ -1034,7 +1034,7 @@ body.sm-app-shell .kpi-icon {
     top: 13px !important;
     right: 13px !important;
     border-radius: 7px !important;
-    font-size: 12px !important;
+    font-size: 13px !important;
 }
 
 body.sm-app-shell .workflow-icon,
@@ -1067,7 +1067,7 @@ body.sm-app-shell .enterprise-button {
     border: 1px solid var(--sm-border-strong) !important;
     border-radius: 6px !important;
     box-shadow: none !important;
-    font-size: 9px !important;
+    font-size: 13px !important;
 }
 
 body.sm-app-shell .enterprise-button:hover {
@@ -1114,7 +1114,7 @@ body.sm-app-shell .alert {
     padding: 10px 12px;
     border-radius: 7px;
     box-shadow: none;
-    font-size: 10px;
+    font-size: 13px;
 }
 
 .swal2-popup {
@@ -1148,7 +1148,7 @@ body.sm-app-shell .alert {
 
 .sm-home-kpi__label {
     color: var(--sm-muted);
-    font-size: 9px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: .04em;
     text-transform: uppercase;
@@ -1163,7 +1163,7 @@ body.sm-app-shell .alert {
     color: var(--sm-primary);
     background: var(--sm-primary-soft);
     border-radius: 6px;
-    font-size: 10px;
+    font-size: 13px;
 }
 
 .sm-home-kpi__value {
@@ -1177,7 +1177,7 @@ body.sm-app-shell .alert {
 .sm-home-kpi__meta {
     margin-top: 4px;
     color: var(--sm-muted);
-    font-size: 9px;
+    font-size: 13px;
 }
 
 .sm-home-layout {
@@ -1200,12 +1200,12 @@ body.sm-app-shell .alert {
 
 .sm-home-stat-row strong {
     color: var(--sm-text);
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .sm-home-stat-row span {
     color: var(--sm-muted);
-    font-size: 9px;
+    font-size: 13px;
 }
 
 .sm-home-attention {
@@ -1227,12 +1227,12 @@ body.sm-app-shell .alert {
 .sm-home-attention__item strong {
     display: block;
     color: var(--sm-text);
-    font-size: 10px;
+    font-size: 13px;
 }
 
 .sm-home-attention__item small {
     color: var(--sm-muted);
-    font-size: 9px;
+    font-size: 13px;
 }
 
 /* PROFILE */
@@ -1256,7 +1256,7 @@ body.sm-app-shell .alert {
     justify-content: center;
     color: #fff;
     background: #334155;
-    border-radius: 16px;
+    border-radius: 12px;
     font-size: 22px;
     font-weight: 700;
 }
@@ -1271,7 +1271,7 @@ body.sm-app-shell .alert {
 .sm-profile-summary p {
     margin: 4px 0 0;
     color: var(--sm-muted);
-    font-size: 10px;
+    font-size: 13px;
 }
 
 .sm-profile-data {
@@ -1288,7 +1288,7 @@ body.sm-app-shell .alert {
 .sm-profile-data__label {
     display: block;
     color: var(--sm-muted);
-    font-size: 8px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: .04em;
     text-transform: uppercase;
@@ -1298,7 +1298,7 @@ body.sm-app-shell .alert {
     display: block;
     margin-top: 2px;
     color: var(--sm-text-secondary);
-    font-size: 10px;
+    font-size: 13px;
     word-break: break-word;
 }
 
@@ -1413,7 +1413,7 @@ body.sm-app-shell .alert {
 
 .sm-auth-eyebrow {
     color: #8ea0b7;
-    font-size: 9px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: .08em;
     text-transform: uppercase;
@@ -1422,7 +1422,7 @@ body.sm-app-shell .alert {
 .sm-auth-brand__copy h1 {
     margin: 10px 0 12px;
     color: #fff;
-    font-size: clamp(28px, 3.2vw, 42px);
+    font-size: clamp(26px, 3vw, 36px);
     font-weight: 700;
     line-height: 1.08;
     letter-spacing: -.035em;
@@ -1431,7 +1431,7 @@ body.sm-app-shell .alert {
 .sm-auth-brand__copy p,
 .sm-auth-brand small {
     color: #9eacbd;
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.65;
 }
 
@@ -1458,7 +1458,7 @@ body.sm-app-shell .alert {
     align-items: center;
     gap: 9px;
     color: var(--sm-text);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
 }
 
@@ -1473,7 +1473,7 @@ body.sm-app-shell .alert {
 .sm-auth-subtitle {
     margin: 6px 0 22px;
     color: var(--sm-muted);
-    font-size: 10px;
+    font-size: 13px;
     line-height: 1.55;
 }
 
@@ -1482,7 +1482,7 @@ body.sm-app-shell .alert {
     padding-top: 14px;
     border-top: 1px solid var(--sm-border);
     color: var(--sm-muted);
-    font-size: 9px;
+    font-size: 13px;
     text-align: center;
 }
 
@@ -1639,14 +1639,14 @@ body.sm-app-shell .alert {
 
 body.sm-app-shell dl dt {
     color: #334155;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 700;
 }
 
 body.sm-app-shell dl dd {
     margin-bottom: 10px;
     color: var(--sm-text-secondary);
-    font-size: 10px;
+    font-size: 13px;
 }
 
 /* Keep legacy module-local decoration subordinate to the shared shell. */
@@ -1706,5 +1706,212 @@ body.sm-app-shell .rounded-lg {
 @media (max-width: 991.98px) {
     .sm-sticky-head thead th {
         top: 0;
+    }
+}
+
+
+/* =========================================================
+   REFINAMIENTO VISUAL 2026-09-18
+   Criterio: interfaz sobria, legible y consistente.
+   ========================================================= */
+body.sm-app-shell .card,
+body.sm-app-shell .enterprise-card,
+body.sm-app-shell .section-card,
+body.sm-app-shell .chart-card,
+body.sm-app-shell .summary-card,
+body.sm-app-shell .results-card,
+body.sm-app-shell .filter-card,
+body.sm-app-shell .dashboard-card,
+body.sm-app-shell .info-card,
+body.sm-app-shell .small-box,
+body.sm-app-shell .info-box,
+body.sm-app-shell .kpi,
+body.sm-app-shell .kpi-card {
+    box-shadow: var(--sm-shadow) !important;
+    transition: border-color .15s ease, background-color .15s ease !important;
+}
+
+body.sm-app-shell .card:hover,
+body.sm-app-shell .small-box:hover,
+body.sm-app-shell .info-box:hover,
+body.sm-app-shell .kpi:hover,
+body.sm-app-shell .kpi-card:hover,
+body.sm-app-shell .resumen-card:hover,
+body.sm-app-shell .severity-card:hover,
+body.sm-app-shell .process-card:hover {
+    transform: none !important;
+    box-shadow: var(--sm-shadow) !important;
+}
+
+body.sm-app-shell .content-header h1,
+body.sm-app-shell .sm-page-heading__title {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+}
+
+body.sm-app-shell .sm-page-heading__subtitle,
+body.sm-app-shell .content-header small,
+body.sm-app-shell .card-header small,
+body.sm-app-shell .form-text,
+body.sm-app-shell small.text-muted {
+    font-size: 12px !important;
+    line-height: 1.45;
+}
+
+body.sm-app-shell .card-title,
+body.sm-app-shell .section-title,
+body.sm-app-shell .enterprise-card-title {
+    font-size: 14px !important;
+}
+
+body.sm-app-shell .table,
+body.sm-app-shell .enterprise-table {
+    font-size: 12px !important;
+}
+
+body.sm-app-shell .table thead th,
+body.sm-app-shell .enterprise-table thead th,
+body.sm-app-shell .sm-data-card .table thead th {
+    font-size: 10px !important;
+    letter-spacing: .035em !important;
+}
+
+body.sm-app-shell .badge,
+body.sm-app-shell .status-badge,
+body.sm-app-shell .enterprise-badge,
+body.sm-app-shell .enterprise-status,
+body.sm-app-shell .badge-enterprise {
+    font-size: 11px !important;
+}
+
+body.sm-app-shell .btn,
+.sm-auth-page .btn {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+body.sm-app-shell .form-control,
+body.sm-app-shell .custom-select,
+.sm-auth-page .form-control,
+body.sm-app-shell .select2-container .select2-selection--single,
+body.sm-app-shell .select2-container--default .select2-selection--multiple {
+    font-size: 13px !important;
+}
+
+body.sm-app-shell .form-group > label,
+body.sm-app-shell .col-form-label,
+.sm-auth-page label {
+    font-size: 12px !important;
+}
+
+body.sm-app-shell .nav-sidebar .nav-item > .nav-link {
+    font-size: 13px !important;
+}
+
+body.sm-app-shell .nav-sidebar .nav-treeview > .nav-item > .nav-link {
+    font-size: 12px !important;
+}
+
+body.sm-app-shell .nav-sidebar > .nav-header {
+    font-size: 10px !important;
+}
+
+body.sm-app-shell .dashboard-header,
+body.sm-app-shell .enterprise-header,
+body.sm-app-shell .module-header,
+body.sm-app-shell .ot-header {
+    box-shadow: var(--sm-shadow) !important;
+}
+
+body.sm-app-shell .dashboard-header h1,
+body.sm-app-shell .dashboard-header h2,
+body.sm-app-shell .enterprise-title {
+    font-size: 22px !important;
+}
+
+body.sm-app-shell .kpi-label {
+    font-size: 11px !important;
+}
+
+body.sm-app-shell .kpi-value {
+    font-size: 26px !important;
+}
+
+body.sm-app-shell .kpi-description,
+body.sm-app-shell .kpi-sub {
+    font-size: 12px !important;
+}
+
+body.sm-app-shell .sm-home-kpi__label,
+body.sm-app-shell .sm-home-kpi__meta,
+body.sm-app-shell .sm-home-stat-row span,
+body.sm-app-shell .sm-home-attention__item small {
+    font-size: 12px !important;
+}
+
+body.sm-app-shell .sm-home-stat-row strong,
+body.sm-app-shell .sm-home-attention__item strong {
+    font-size: 13px !important;
+}
+
+.sm-auth-title {
+    font-size: 24px !important;
+}
+
+.sm-auth-subtitle,
+.sm-auth-footer,
+.sm-auth-brand__copy p,
+.sm-auth-brand small {
+    font-size: 13px !important;
+}
+
+.sm-table-toolbar {
+    padding: 14px 16px;
+    background: #fff;
+    border-bottom: 1px solid var(--sm-border);
+}
+
+.sm-table-toolbar label {
+    margin-bottom: 6px;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+body.sm-app-shell #loadingOverlayArticulos {
+    background: rgba(31, 41, 55, .48) !important;
+    backdrop-filter: none !important;
+}
+
+body.sm-app-shell #loadingOverlayArticulos .loading-box {
+    width: min(360px, calc(100vw - 32px)) !important;
+    padding: 26px 24px !important;
+    border: 1px solid var(--sm-border) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, .16) !important;
+    animation: none !important;
+}
+
+body.sm-app-shell #loadingOverlayArticulos .icon-circle {
+    width: 48px !important;
+    height: 48px !important;
+    color: var(--sm-primary) !important;
+    background: var(--sm-primary-soft) !important;
+    border: 1px solid #d8e4ed !important;
+    font-size: 18px !important;
+}
+
+body.sm-app-shell #progressBarArticulos {
+    background: var(--sm-primary) !important;
+}
+
+@media (max-width: 575.98px) {
+    body.sm-app-shell .content-header h1,
+    body.sm-app-shell .sm-page-heading__title {
+        font-size: 20px !important;
+    }
+
+    body.sm-app-shell .btn {
+        min-height: 40px;
     }
 }
