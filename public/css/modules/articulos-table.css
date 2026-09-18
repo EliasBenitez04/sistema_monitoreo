@@ -1,200 +1,109 @@
-/* Extracted from resources/views/articulos/table.blade.php. */
+/* Artículos: estilos locales y deliberadamente acotados al módulo. */
 
-th,
-        td {
-            text-align: center;
-            vertical-align: middle;
-        }
+#articulos-table {
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 12px;
+}
 
-        td.producto,
-        th.producto {
-            text-align: center;
-            vertical-align: middle;
-        }
+#articulos-table th,
+#articulos-table td {
+    padding: 10px 12px !important;
+    vertical-align: middle;
+    white-space: nowrap;
+}
 
-        td.producto_descri {
-            text-align: left;
-            vertical-align: middle;
-        }
+#articulos-table th.producto,
+#articulos-table td.producto {
+    text-align: center;
+}
 
-        .btn-group {
-            display: flex;
-            justify-content: center;
-        }
+#articulos-table td.producto_descri {
+    text-align: left;
+}
 
-        .btn-group .btn {
-            margin: 0;
-        }
+#articulos-table .btn-group {
+    display: inline-flex;
+    justify-content: center;
+    gap: 4px;
+}
 
-        .btn-info,
-        .btn-danger {
-            transition: background-color 0.3s ease;
-        }
+#articulos-table .btn {
+    margin: 0;
+}
 
-        .btn-info:hover,
-        .btn-danger:hover {
-            transform: scale(1.1);
-        }
+#loadingOverlayArticulos {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(31, 41, 55, .48);
+}
 
-        .loader-box {
-            width: 100px;
-            height: 100px;
-            background: #fff;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        }
+#loadingOverlayArticulos .loading-box {
+    width: min(360px, calc(100vw - 32px));
+    padding: 26px 24px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e1e6eb;
+    border-radius: 10px;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, .16);
+}
 
-        #articulos-table {
-            font-size: 13px;
-            width: 100%;
-        }
+#loadingOverlayArticulos .icon-circle {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #315f8c;
+    background: #eef4f8;
+    border: 1px solid #d8e4ed;
+    border-radius: 8px;
+    font-size: 18px;
+}
 
-        #articulos-table th,
-        #articulos-table td {
-            padding: 4px 6px !important;
-            vertical-align: middle;
-        }
+#loadingOverlayArticulos .loading-box h4 {
+    margin-bottom: 6px;
+    color: #182230;
+    font-size: 18px;
+    font-weight: 700;
+}
 
-        #articulos-table .btn {
-            padding: 2px 6px;
-            font-size: 18px;
-        }
+#loadingOverlayArticulos .loading-box p {
+    margin-bottom: 16px;
+    color: #6b778c;
+    font-size: 13px;
+}
 
-        #articulos-table th {
-            white-space: nowrap;
-        }
+.progress-custom {
+    width: 100%;
+    height: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    background: #e8edf3;
+    border-radius: 999px;
+}
 
-        #articulos-table td {
-            white-space: nowrap;
-        }
+#progressBarArticulos {
+    width: 0;
+    height: 100%;
+    background: #315f8c;
+    transition: width .25s ease;
+}
 
-th,
-        td {
-            text-align: center;
-            vertical-align: middle;
-        }
+#counterArticulos {
+    color: #315f8c;
+    font-size: 14px;
+    font-weight: 700;
+}
 
-        td.producto,
-        th.producto {
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        td.producto_descri {
-            text-align: left;
-            vertical-align: middle;
-        }
-
-        .btn-group {
-            display: flex;
-            justify-content: center;
-        }
-
-        .btn-group .btn {
-            margin: 0;
-        }
-
-        .btn-info,
-        .btn-danger {
-            transition: all 0.3s ease;
-        }
-
-        .btn-info:hover,
-        .btn-danger:hover {
-            transform: scale(1.08);
-        }
-
-        #articulos-table {
-            font-size: 13px;
-            width: 100%;
-        }
-
-        #articulos-table th,
-        #articulos-table td {
-            padding: 3px 5px !important;
-            white-space: nowrap;
-        }
-
-        /* ================= LOADER ================= */
-        #loadingOverlayArticulos {
-            position: fixed;
-            inset: 0;
-            display: none;
-            z-index: 99999;
-            background: rgba(10, 10, 10, .65);
-            backdrop-filter: blur(8px);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .loading-box {
-            width: 380px;
-            background: #fff;
-            border-radius: 18px;
-            padding: 35px 30px;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, .25);
-            animation: fadeUp .3s ease;
-        }
-
-        .icon-circle {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #16a34a, #22c55e);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            font-size: 26px;
-        }
-
-        .loading-box h4 {
-            font-weight: 700;
-            color: #111;
-        }
-
-        .loading-box p {
-            color: #6b7280;
-            font-size: 14px;
-            margin-bottom: 18px;
-        }
-
-        .progress-custom {
-            width: 100%;
-            height: 10px;
-            background: #e5e7eb;
-            border-radius: 30px;
-            overflow: hidden;
-            margin-bottom: 15px;
-        }
-
-        #progressBarArticulos {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #16a34a, #22c55e, #4ade80);
-            transition: width .4s ease;
-        }
-
-        #counterArticulos {
-            font-size: 18px;
-            font-weight: 700;
-            color: #16a34a;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+@media (max-width: 767.98px) {
+    #articulos-table th,
+    #articulos-table td {
+        padding: 9px 10px !important;
+    }
+}
