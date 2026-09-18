@@ -1,0 +1,567 @@
+/* Extracted from resources/views/redistribucion_sugeridas/lote.blade.php. */
+
+.redistribucion-lote-page {
+                background: #f5f7fa;
+                min-height: 100vh;
+                padding: 20px 0 40px;
+            }
+
+
+            /* HEADER */
+
+            .lote-header {
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                border-radius: 12px;
+                padding: 20px 24px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                box-shadow: 0 2px 8px rgba(15, 23, 42, .04);
+            }
+
+            .lote-header-left {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .lote-icon {
+                width: 48px;
+                height: 48px;
+                border-radius: 10px;
+                background: #eef4ff;
+                color: #2563eb;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+            }
+
+            .lote-header span:not(.lote-status) {
+                display: block;
+                font-size: 9px;
+                font-weight: 700;
+                color: #2563eb;
+                letter-spacing: 1px;
+            }
+
+            .lote-header h3 {
+                margin: 2px 0;
+                color: #111827;
+                font-size: 20px;
+                font-weight: 700;
+            }
+
+            .lote-header p {
+                margin: 0;
+                color: #9ca3af;
+                font-size: 12px;
+            }
+
+
+            /* STATUS */
+
+            .lote-status {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                border-radius: 20px;
+                padding: 7px 12px;
+                font-size: 9px;
+                font-weight: 700;
+            }
+
+            .lote-status span {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: currentColor;
+            }
+
+            .lote-status.generated {
+                background: #e8f4ff;
+                color: #1671c5;
+            }
+
+            .lote-status.process {
+                background: #fff7df;
+                color: #b7791f;
+            }
+
+            .lote-status.finished {
+                background: #eaf8ef;
+                color: #16803c;
+            }
+
+            .lote-status.default {
+                background: #f3f4f6;
+                color: #6b7280;
+            }
+
+
+            /* KPI */
+
+            .lote-kpi {
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                border-radius: 10px;
+                padding: 17px;
+                min-height: 100px;
+                display: flex;
+                align-items: center;
+                gap: 13px;
+                box-shadow: 0 2px 7px rgba(15, 23, 42, .035);
+            }
+
+            .lote-kpi-icon {
+                width: 44px;
+                height: 44px;
+                border-radius: 9px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+            }
+
+            .lote-kpi-icon.blue {
+                background: #eff6ff;
+                color: #2563eb;
+            }
+
+            .lote-kpi-icon.purple {
+                background: #f3e8ff;
+                color: #7c3aed;
+            }
+
+            .lote-kpi-icon.orange {
+                background: #fff7ed;
+                color: #ea580c;
+            }
+
+            .lote-kpi-icon.green {
+                background: #ecfdf5;
+                color: #059669;
+            }
+
+            .lote-kpi span {
+                display: block;
+                font-size: 9px;
+                font-weight: 700;
+                color: #9ca3af;
+                letter-spacing: .6px;
+            }
+
+            .lote-kpi strong {
+                display: block;
+                color: #111827;
+                font-size: 21px;
+                line-height: 1.3;
+            }
+
+            .lote-kpi small {
+                display: block;
+                color: #9ca3af;
+                font-size: 9px;
+            }
+
+            .date-value {
+                font-size: 15px !important;
+            }
+
+
+            /* CARD */
+
+            .lote-card {
+                border: 1px solid #e5e7eb;
+                border-radius: 11px;
+                box-shadow: 0 2px 8px rgba(15, 23, 42, .04);
+                overflow: hidden;
+            }
+
+            .lote-card-header {
+                background: #fff;
+                border-bottom: 1px solid #eef0f3;
+                padding: 17px 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .lote-card-header h5 {
+                margin: 0;
+                color: #111827;
+                font-size: 14px;
+                font-weight: 700;
+            }
+
+            .lote-card-header h5 i {
+                color: #2563eb;
+                margin-right: 7px;
+            }
+
+            .lote-card-header small {
+                display: block;
+                margin-top: 3px;
+                color: #9ca3af;
+                font-size: 10px;
+            }
+
+            .lot-id {
+                background: #f8fafc;
+                border: 1px solid #e5e7eb;
+                color: #6b7280;
+                padding: 6px 9px;
+                border-radius: 6px;
+                font-size: 9px;
+                font-weight: 600;
+            }
+
+
+            /* INFO */
+
+            .lote-info {
+                border-left: 2px solid #e5e7eb;
+                padding-left: 10px;
+            }
+
+            .lote-info span {
+                display: block;
+                color: #9ca3af;
+                font-size: 8px;
+                font-weight: 700;
+                letter-spacing: .5px;
+            }
+
+            .lote-info strong {
+                display: block;
+                margin-top: 4px;
+                color: #374151;
+                font-size: 12px;
+            }
+
+            .lote-observation {
+                display: flex;
+                gap: 10px;
+                background: #f8fafc;
+                border: 1px solid #edf0f3;
+                border-radius: 8px;
+                padding: 12px;
+            }
+
+            .lote-observation>i {
+                color: #2563eb;
+            }
+
+            .lote-observation strong {
+                display: block;
+                font-size: 10px;
+                color: #374151;
+            }
+
+            .lote-observation p {
+                margin: 3px 0 0;
+                color: #6b7280;
+                font-size: 10px;
+            }
+
+
+            /* SEARCH */
+
+            .table-tools {
+                display: flex;
+                align-items: center;
+            }
+
+            .table-search {
+                position: relative;
+            }
+
+            .table-search i {
+                position: absolute;
+                left: 11px;
+                top: 10px;
+                color: #9ca3af;
+                font-size: 11px;
+            }
+
+            .table-search input {
+                width: 260px;
+                height: 34px;
+                border: 1px solid #dfe3e8;
+                border-radius: 6px;
+                padding-left: 32px;
+                font-size: 11px;
+                outline: none;
+            }
+
+            .table-search input:focus {
+                border-color: #80bdff;
+                box-shadow: 0 0 0 .12rem rgba(0, 123, 255, .08);
+            }
+
+
+            /* TABLE */
+
+            .lote-table {
+                margin: 0;
+            }
+
+            .lote-table thead th {
+                background: #f8fafc;
+                border-top: 0;
+                border-bottom: 1px solid #e5e7eb;
+                padding: 12px 14px;
+                color: #6b7280;
+                font-size: 9px;
+                font-weight: 700;
+                letter-spacing: .5px;
+                white-space: nowrap;
+            }
+
+            .lote-table tbody td {
+                padding: 12px 14px;
+                border-top: 1px solid #f1f3f5;
+                vertical-align: middle;
+                font-size: 11px;
+            }
+
+            .lote-table tbody tr:hover {
+                background: #fafcff;
+            }
+
+            .number-cell {
+                color: #9ca3af;
+                font-size: 9px !important;
+            }
+
+
+            /* PRODUCT */
+
+            .lote-product {
+                display: flex;
+                align-items: center;
+                gap: 9px;
+            }
+
+            .product-icon {
+                width: 32px;
+                height: 32px;
+                border-radius: 7px;
+                background: #f3f4f6;
+                color: #6b7280;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .lote-product strong {
+                display: block;
+                color: #111827;
+            }
+
+            .lote-product small {
+                display: block;
+                color: #9ca3af;
+                font-size: 8px;
+                margin-top: 2px;
+            }
+
+
+            /* LOCATION */
+
+            .transfer-location {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .transfer-icon {
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 9px;
+            }
+
+            .transfer-icon.origin {
+                background: #fff1f2;
+                color: #dc2626;
+            }
+
+            .transfer-icon.destination {
+                background: #eff6ff;
+                color: #2563eb;
+            }
+
+            .transfer-location strong {
+                display: block;
+                color: #374151;
+                font-size: 11px;
+            }
+
+            .transfer-location small {
+                display: block;
+                color: #9ca3af;
+                font-size: 8px;
+                margin-top: 2px;
+            }
+
+
+            /* QUANTITY */
+
+            .lote-quantity {
+                display: inline-block;
+                background: #eff6ff;
+                border: 1px solid #dbeafe;
+                color: #2563eb;
+                border-radius: 6px;
+                padding: 5px 10px;
+                font-size: 12px;
+                font-weight: 700;
+            }
+
+
+            /* DETAIL STATUS */
+
+            .detail-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+                border-radius: 15px;
+                padding: 5px 8px;
+                font-size: 8px;
+                font-weight: 700;
+            }
+
+            .detail-badge span {
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: currentColor;
+            }
+
+            .detail-badge.pending {
+                background: #fff7df;
+                color: #b7791f;
+            }
+
+            .detail-badge.process {
+                background: #0076e4;
+                color: #ffffff;
+            }
+
+            .detail-badge.finished {
+                background: #07c74a;
+                color: #ffffff;
+            }
+
+            .detail-badge.default {
+                background: #f5de0e;
+                color: #0c0c0b;
+            }
+
+
+            /* ACTIONS */
+
+            .lote-actions {
+                background: #fafbfc;
+                border-top: 1px solid #eef0f3;
+                padding: 15px 18px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .actions-right {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .lote-btn {
+                border-radius: 7px;
+                font-size: 11px;
+                font-weight: 600;
+                padding: 8px 13px;
+            }
+
+            .lote-btn-main {
+                border-radius: 7px;
+                font-size: 11px;
+                font-weight: 600;
+                padding: 9px 15px;
+            }
+
+            .lote-btn i,
+            .lote-btn-main i {
+                margin-right: 5px;
+            }
+
+            .lote-finished-message {
+                color: #16803c;
+                font-size: 11px;
+                font-weight: 600;
+            }
+
+            .lote-finished-message i {
+                margin-right: 5px;
+            }
+
+
+            /* EMPTY */
+
+            .empty-lote {
+                text-align: center;
+                padding: 55px 20px;
+            }
+
+            .empty-lote i {
+                font-size: 30px;
+                color: #d1d5db;
+            }
+
+            .empty-lote h5 {
+                margin-top: 12px;
+                color: #374151;
+            }
+
+            .empty-lote p {
+                color: #9ca3af;
+                font-size: 11px;
+            }
+
+
+            /* RESPONSIVE */
+
+            @media(max-width: 768px) {
+
+                .lote-header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 15px;
+                }
+
+                .lote-card-header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 12px;
+                }
+
+                .table-search input {
+                    width: 100%;
+                }
+
+                .lote-actions {
+                    flex-direction: column;
+                    gap: 10px;
+                    align-items: stretch;
+                }
+
+                .actions-right {
+                    flex-direction: column;
+                }
+
+            }
