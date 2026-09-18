@@ -240,51 +240,14 @@
     ]) !!}
 </div>
 @include('pedido_compras.modal_producto')
-<style>
-    .toast-grande {
-        font-size: 20px;
-        padding: 15px 20px;
-        width: 450px !important;
-    }
-</style>
+
 <!-- Agregar SweetAlert2 -->
 @include('sweetalert::alert')
 <button id="btnScroll" type="button" class="btn btn-primary" onclick="toggleScroll()">
     <i id="iconScroll" class="fas fa-arrow-up"></i>
 </button>
 
-<style>
-    #btnScroll {
-        position: fixed;
-        bottom: 25px;
-        right: 65px;
-        z-index: 9999;
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(20px);
-        transition: all 0.3s ease;
-    }
 
-    #btnScroll.show {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    .toast-grande {
-        font-size: 20px;
-        padding: 15px 20px;
-        width: 450px !important;
-    }
-</style>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -794,4 +757,8 @@
             });
         }
     </script>
+@endpush
+
+@push('page_css')
+    <link rel="stylesheet" href="{{ asset('css/modules/pedido-fields.css') }}?v=20260918-2">
 @endpush

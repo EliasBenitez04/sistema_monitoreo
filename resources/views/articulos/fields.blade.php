@@ -135,34 +135,7 @@
     </div>
 </div>
 
-<style>
-    #loader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.9);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        z-index: 9999;
-    }
 
-    #progress-bar {
-        width: 0%;
-        height: 20px;
-        background: #4caf50;
-        transition: width 0.3s;
-    }
-
-    #percent {
-        margin-top: 10px;
-        font-size: 18px;
-        font-weight: bold;
-    }
-</style>
 
 <script>
     const btnImport = document.getElementById('btn-import');
@@ -213,3 +186,7 @@
 
     });
 </script>
+
+@push('page_css')
+    <link rel="stylesheet" href="{{ asset('css/modules/articulos-fields.css') }}?v=20260918-2">
+@endpush
