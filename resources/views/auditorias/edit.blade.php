@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
+@section('title', 'Editar auditoría | ' . config('app.name'))
+
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1>
-                        Edit Auditoria
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Editar auditoría"
+        subtitle="Actualice la información de la auditoría."
+        icon="fas fa-clipboard-check">
+        <a href="{{ route('auditorias.index') }}" class="btn btn-default">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </x-page-header>
 
     <div class="content px-3">
 
         @include('adminlte-templates::common.errors')
 
-        <div class="card">
+        <div class="card sm-form-card">
 
             {!! Form::model($auditoria, ['route' => ['auditorias.update', $auditoria->id], 'method' => 'patch']) !!}
 
@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            <div class="card-footer">
+            <div class="card-footer d-flex justify-content-end">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
                 <a href="{{ route('auditorias.index') }}" class="btn btn-default"> Cancel </a>
             </div>
