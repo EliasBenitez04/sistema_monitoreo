@@ -1,24 +1,24 @@
 @extends('layouts.app')
 
+@section('title', 'Nuevo pedido de compra | ' . config('app.name'))
+
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1>
-                        Crear Nuevo Pedido
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-page-header
+        title="Nuevo pedido de compra"
+        subtitle="Registre un nuevo pedido de compra."
+        icon="fas fa-shopping-cart">
+        <a href="{{ route('pedido_compras.index') }}" class="btn btn-default">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </x-page-header>
 
 
     <div class="content px-3">
 
         @include('adminlte-templates::common.errors')
 
-        <div class="card">
+        <div class="card sm-form-card">
 
             {!! Form::open([
                 'route' => 'pedido_compras.store',
@@ -39,15 +39,13 @@
             </div>
 
 
-            <div class="card-footer">
+            <div class="card-footer d-flex justify-content-end">
 
                 {!! Form::submit('Guardar', [
-                    'class' => 'btn btn-success',
+                    'class' => 'btn btn-primary',
                 ]) !!}
 
-                <a href="{{ route('pedido_compras.index') }}" class="btn btn-primary">
-                    Cancelar
-                </a>
+                <a href="{{ route('pedido_compras.index') }}" class="btn btn-default ml-2">Cancelar</a>
 
             </div>
 
