@@ -1,59 +1,26 @@
 @extends('layouts.app')
 
+@section('title', 'OT atrasadas | ' . config('app.name'))
+
 @section('content')
+    <x-page-header
+        title="OT atrasadas"
+        :subtitle="'Órdenes de trabajo sin movimiento durante ' . $diasAlerta . ' días o más.'"
+        icon="fas fa-exclamation-triangle">
+        <span class="badge badge-light">
+            <i class="fas fa-shield-alt mr-1"></i>
+            Postergadas excluidas
+        </span>
+        <a href="{{ route('dashboard.ot') }}" class="btn btn-primary">
+            <i class="fas fa-search"></i>
+            Buscar OT
+        </a>
+    </x-page-header>
 
-<div class="container-fluid">
-
-    {{-- =========================================================
-         HEADER
-    ========================================================== --}}
-
-    <div class="dashboard-header mb-4">
-
-        <div>
-            <div class="d-flex align-items-center mb-2">
-
-                <div class="header-icon mr-3">
-                    <i class="fas fa-exclamation-triangle"></i>
-                </div>
-
-                <div>
-                    <h1 class="mb-0 font-weight-bold">
-                        OT Atrasadas
-                    </h1>
-
-                    <p class="text-muted mb-0">
-                        Órdenes de trabajo sin movimiento durante
-                        <strong>{{ $diasAlerta }} días o más</strong>
-                    </p>
-                </div>
-
-            </div>
-
-            <div>
-                <span class="badge badge-light border">
-                    <i class="fas fa-shield-alt mr-1 text-success"></i>
-                    OT POSTERGADAS excluidas
-                </span>
-            </div>
-        </div>
-
-        <div>
-            <a href="{{ route('dashboard.ot') }}"
-               class="btn btn-primary shadow-sm">
-
-                <i class="fas fa-search mr-1"></i>
-                Buscar OT
-
-            </a>
-        </div>
-
-    </div>
-
-
-    {{-- =========================================================
-         KPIs
-    ========================================================== --}}
+    <div class="content px-3">
+        {{-- =========================================================
+             KPIs
+        ========================================================== --}}
 
     <div class="row mb-4">
 
