@@ -6,79 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artículos</title>
-    <style>
-        th,
-        td {
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        td.producto,
-        th.producto {
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        td.producto_descri {
-            text-align: left;
-            vertical-align: middle;
-        }
-
-        .btn-group {
-            display: flex;
-            justify-content: center;
-        }
-
-        .btn-group .btn {
-            margin: 0;
-        }
-
-        .btn-info,
-        .btn-danger {
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-info:hover,
-        .btn-danger:hover {
-            transform: scale(1.1);
-        }
-
-        .loader-box {
-            width: 100px;
-            height: 100px;
-            background: #fff;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        }
-
-        #articulos-table {
-            font-size: 13px;
-            width: 100%;
-        }
-
-        #articulos-table th,
-        #articulos-table td {
-            padding: 4px 6px !important;
-            vertical-align: middle;
-        }
-
-        #articulos-table .btn {
-            padding: 2px 6px;
-            font-size: 18px;
-        }
-
-        #articulos-table th {
-            white-space: nowrap;
-        }
-
-        #articulos-table td {
-            white-space: nowrap;
-        }
-    </style>
+    
 </head>
 
 <body>
@@ -240,134 +168,7 @@
         </div>
     </div>
 
-    <style>
-        th,
-        td {
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        td.producto,
-        th.producto {
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        td.producto_descri {
-            text-align: left;
-            vertical-align: middle;
-        }
-
-        .btn-group {
-            display: flex;
-            justify-content: center;
-        }
-
-        .btn-group .btn {
-            margin: 0;
-        }
-
-        .btn-info,
-        .btn-danger {
-            transition: all 0.3s ease;
-        }
-
-        .btn-info:hover,
-        .btn-danger:hover {
-            transform: scale(1.08);
-        }
-
-        #articulos-table {
-            font-size: 13px;
-            width: 100%;
-        }
-
-        #articulos-table th,
-        #articulos-table td {
-            padding: 3px 5px !important;
-            white-space: nowrap;
-        }
-
-        /* ================= LOADER ================= */
-        #loadingOverlayArticulos {
-            position: fixed;
-            inset: 0;
-            display: none;
-            z-index: 99999;
-            background: rgba(10, 10, 10, .65);
-            backdrop-filter: blur(8px);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .loading-box {
-            width: 380px;
-            background: #fff;
-            border-radius: 18px;
-            padding: 35px 30px;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, .25);
-            animation: fadeUp .3s ease;
-        }
-
-        .icon-circle {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #16a34a, #22c55e);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            font-size: 26px;
-        }
-
-        .loading-box h4 {
-            font-weight: 700;
-            color: #111;
-        }
-
-        .loading-box p {
-            color: #6b7280;
-            font-size: 14px;
-            margin-bottom: 18px;
-        }
-
-        .progress-custom {
-            width: 100%;
-            height: 10px;
-            background: #e5e7eb;
-            border-radius: 30px;
-            overflow: hidden;
-            margin-bottom: 15px;
-        }
-
-        #progressBarArticulos {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #16a34a, #22c55e, #4ade80);
-            transition: width .4s ease;
-        }
-
-        #counterArticulos {
-            font-size: 18px;
-            font-weight: 700;
-            color: #16a34a;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    
 </body>
 
 </html>
@@ -495,3 +296,7 @@
 
     });
 </script>
+
+@push('page_css')
+    <link rel="stylesheet" href="{{ asset('css/modules/articulos-table.css') }}?v=20260918-2">
+@endpush
