@@ -1,24 +1,23 @@
 @extends('layouts.app')
 
-@section('content')
+@section('title', 'Editar orden de trabajo | ' . config('app.name'))
 
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-12">
-                <h1>
-                    Editar Orden de Trabajo
-                </h1>
-            </div>
-        </div>
-    </div>
-</section>
+@section('content')
+    <x-page-header
+        title="Editar orden de trabajo"
+        subtitle="Actualice la información de la orden de trabajo."
+        icon="fas fa-clipboard-check">
+        <a href="{{ route('ots.index') }}" class="btn btn-default">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+    </x-page-header>
 
 <div class="content px-3">
 
     @include('adminlte-templates::common.errors')
 
-    <div class="card">
+    <div class="card sm-form-card">
 
         {!! Form::model($ot, [
         'route' => ['ots.update', $ot->id_ot],
@@ -37,16 +36,14 @@
 
         </div>
 
-        <div class="card-footer">
+        <div class="card-footer d-flex justify-content-end">
 
             {!! Form::submit('Guardar', [
-            'class' => 'btn btn-success'
+            'class' => 'btn btn-primary'
             ]) !!}
 
             <a href="{{ route('ots.index') }}"
-                class="btn btn-primary">
-                Cancelar
-            </a>
+                class="btn btn-default ml-2">Cancelar</a>
 
         </div>
 
