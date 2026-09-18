@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Órdenes de trabajo | ' . config('app.name'))
+
 @section('content')
     <x-page-header
         title="Órdenes de trabajo"
@@ -26,8 +28,6 @@
     </x-page-header>
 
     <div class="content px-3">
-        @include('sweetalert::alert')
-
         <div class="card sm-data-card">
             <div class="card-header">
                 <div>

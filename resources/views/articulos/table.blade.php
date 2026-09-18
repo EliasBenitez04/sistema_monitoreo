@@ -136,6 +136,7 @@
 
         </div>
     </div>
+@push('page_scripts')
 <script>
     document.addEventListener("DOMContentLoaded", function() {
 
@@ -262,6 +263,7 @@
 
     });
 </script>
+@endpush
 
 @push('page_css')
     <link rel="stylesheet" href="{{ asset('css/modules/articulos-table.css') }}?v=20260918-4">

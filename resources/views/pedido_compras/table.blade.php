@@ -412,6 +412,7 @@
     ORDENAMIENTO
 ========================================================= --}}
 
+@push('page_scripts')
 <script>
     document.addEventListener("DOMContentLoaded", function() {
 
@@ -613,6 +614,7 @@
 
     });
 </script>
+@endpush
 
 @push('page_css')
     <link rel="stylesheet" href="{{ asset('css/modules/pedido-table.css') }}?v=20260918-2">

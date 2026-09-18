@@ -1,5 +1,3 @@
-@include('sweetalert::alert')
-
 <div class="import-container">
 
     {{-- =========================================================
@@ -335,6 +333,7 @@
 
 
 
+@push('page_scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
@@ -665,7 +664,8 @@
 
     });
 </script>
+@endpush
 
 @push('page_css')
-    <link rel="stylesheet" href="{{ asset('css/modules/stocks-table.css') }}?v=20260918-2">
+    <link rel="stylesheet" href="{{ asset('css/modules/stocks-table.css') }}?v=20260918-3">
 @endpush

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Proceso #' . $proceso->id . ' | ' . config('app.name'))
+
 @section('content')
     <div class="redistribucion-proceso-page">
 

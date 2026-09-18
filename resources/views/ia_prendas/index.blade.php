@@ -14,8 +14,6 @@
     </x-page-header>
 
     <div class="content px-3">
-        @include('sweetalert::alert')
-
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif

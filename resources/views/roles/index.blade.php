@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Roles | ' . config('app.name'))
+
 @section('content')
     <x-page-header
         title="Roles"
@@ -14,8 +16,6 @@
     </x-page-header>
 
     <div class="content px-3">
-        @include('sweetalert::alert')
-
         <div class="card sm-data-card">
             <div class="card-header">
                 <div>

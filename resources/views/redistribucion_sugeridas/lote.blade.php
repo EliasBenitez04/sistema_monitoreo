@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Lote ' . $lote->numero_lote . ' | ' . config('app.name'))
+
 @section('content')
     <div class="redistribucion-lote-page">
 
@@ -680,7 +682,11 @@
         {{-- JAVASCRIPT --}}
         {{-- ========================================================= --}}
 
-        <script>
+        
+    @endsection
+
+@push('page_scripts')
+<script>
             document.addEventListener('DOMContentLoaded', function() {
 
 
@@ -1149,7 +1155,7 @@
 
             });
         </script>
-    @endsection
+@endpush
 
 @push('page_css')
     <link rel="stylesheet" href="{{ asset('css/modules/redistribucion-lote.css') }}?v=20260918-2">

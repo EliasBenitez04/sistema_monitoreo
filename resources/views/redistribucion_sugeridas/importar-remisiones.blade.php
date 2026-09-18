@@ -304,6 +304,7 @@
      JAVASCRIPT
 ================================================================ --}}
 
+@push('page_scripts')
 <script>
     $(document).ready(function() {
 
@@ -481,6 +482,7 @@
 
     });
 </script>
+@endpush
 
 @push('page_css')
     <link rel="stylesheet" href="{{ asset('css/modules/redistribucion-importar-remisiones.css') }}?v=20260918-2">

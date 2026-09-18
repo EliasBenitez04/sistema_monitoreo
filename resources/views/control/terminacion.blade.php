@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Control de terminación | ' . config('app.name'))
+
 @section('content')
     
 
@@ -997,7 +999,11 @@
      FILTRO + ACTUALIZACIÓN DE TARJETAS
 ========================================================= --}}
 
-        <script>
+        
+    @endsection
+
+@push('page_scripts')
+<script>
             document.addEventListener('DOMContentLoaded', function() {
 
                 const buscador =
@@ -1265,7 +1271,7 @@
 
             });
         </script>
-    @endsection
+@endpush
 
 @push('page_css')
     <link rel="stylesheet" href="{{ asset('css/modules/control-terminacion.css') }}?v=20260918-3">

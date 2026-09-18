@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Usuarios | ' . config('app.name'))
+
 @section('content')
     <x-page-header
         title="Usuarios"
@@ -12,8 +14,6 @@
     </x-page-header>
 
     <div class="content px-3">
-        @include('sweetalert::alert')
-
         <div class="card sm-data-card">
             <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
                 <div class="mb-2 mb-md-0">

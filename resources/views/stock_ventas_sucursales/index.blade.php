@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Stock y ventas por sucursal | ' . config('app.name'))
+
 @section('content')
     <x-page-header
         title="Stock y ventas por sucursal"
@@ -12,18 +14,6 @@
     </x-page-header>
 
     <div class="content px-3">
-        @include('sweetalert::alert')
-
-        <div class="card sm-data-card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title mb-0">Información consolidada</h3>
-                    <small class="text-muted">Consulte los registros cargados antes de ejecutar análisis de redistribución.</small>
-                </div>
-            </div>
-            <div class="card-body p-0">
-                @include('stock_ventas_sucursales.table')
-            </div>
-        </div>
+        @include('stock_ventas_sucursales.table')
     </div>
 @endsection

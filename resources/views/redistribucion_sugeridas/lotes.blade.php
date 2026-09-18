@@ -1,76 +1,24 @@
 @extends('layouts.app')
 
+@section('title', 'Gestión de lotes | ' . config('app.name'))
+
 @section('content')
     @include('redistribucion_sugeridas.importar-remisiones')
 
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row align-items-center">
+    <x-page-header
+        title="Gestión de lotes"
+        subtitle="Control y seguimiento de movimientos de redistribución."
+        icon="fas fa-layer-group">
+        @can('redistribucionsugerencia importarRemisiones')
+            <button type="button" class="btn btn-primary btn-import-remisiones" data-toggle="modal"
+                data-target="#modalImportarRemisiones">
+                <i class="fas fa-file-import"></i>
+                Importar remisiones
+            </button>
+        @endcan
+    </x-page-header>
 
-                {{-- TÍTULO --}}
-                <div class="col-md-7">
-                    <div class="page-heading">
-
-                        <div class="page-heading-icon">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-
-                        <div>
-                            <h1>Gestión de Lotes</h1>
-
-                            <small>
-                                Control y seguimiento de movimientos de redistribución
-                            </small>
-                        </div>
-
-                    </div>
-                </div>
-
-
-                {{-- ACCIONES + BREADCRUMB --}}
-                <div class="col-md-5">
-
-                    {{-- BOTÓN IMPORTAR --}}
-                    @can('redistribucionsugerencia importarRemisiones')
-                        <div class="text-md-right mb-3">
-
-                            <button type="button" class="btn btn-import-remisiones" data-toggle="modal"
-                                data-target="#modalImportarRemisiones">
-
-                                <span class="import-btn-icon">
-                                    <i class="fas fa-file-import"></i>
-                                </span>
-
-                                <span>Importar remisiones</span>
-
-                            </button>
-                        </div>
-                    @endcan
-                    
-
-
-                    {{-- BREADCRUMB --}}
-                    <ol class="breadcrumb float-md-right mb-0">
-
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('RedistribucionSugeridas.index') }}">
-                                Redistribución Sugerida
-                            </a>
-                        </li>
-
-                        <li class="breadcrumb-item active">
-                            Gestión de Lotes
-                        </li>
-
-                    </ol>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="content">
+    <section class="content sm-lotes-page">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-3 col-md-6">
@@ -284,8 +232,6 @@
                                             <td>
                                                 <div class="action-group">
 
-                                                    <div class="action-group">
-
                                                         {{-- VER LOTE --}}
                                                         <a href="{{ route('RedistribucionSugeridas.lote', ['id' => $lote->id]) }}"
                                                             class="btn btn-continue">
@@ -375,7 +321,6 @@
                                                         class="fas fa-cogs"></i>{{ $lote->estado }}</span></td>
                                             <td>
                                                 <div class="action-group">
-                                                    <div class="action-group">
                                                         <a href="{{ route('RedistribucionSugeridas.lote', ['id' => $lote->id]) }}"
                                                             class="btn btn-continue"><i class="fas fa-eye"></i>
                                                             Ver Lote</a>
@@ -514,6 +459,10 @@
             </div>
         </div>
     </section>
+
+@endsection
+
+@push('page_scripts')
 <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.form-generar-lote').forEach(function(form) {
@@ -786,8 +735,8 @@
             });
         @endif
     </script>
-@endsection
+@endpush
 
 @push('page_css')
-    <link rel="stylesheet" href="{{ asset('css/modules/redistribucion-lotes.css') }}?v=20260918-2">
+    <link rel="stylesheet" href="{{ asset('css/modules/redistribucion-lotes.css') }}?v=20260918-3">
 @endpush

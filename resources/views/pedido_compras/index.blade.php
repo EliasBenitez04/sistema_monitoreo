@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Pedidos mayoristas | ' . config('app.name'))
+
 @section('content')
     <x-page-header
         title="Pedidos mayoristas"
@@ -16,7 +18,6 @@
     </x-page-header>
 
     <div class="content px-3 pedidos-page">
-        @include('sweetalert::alert')
         @include('pedido_compras.table')
     </div>
 @endsection

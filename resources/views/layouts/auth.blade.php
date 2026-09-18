@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="theme-color" content="#18202d">
+    <meta name="theme-color" content="#1f2937">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', config('app.name'))</title>
@@ -18,7 +18,7 @@
         crossorigin="anonymous">
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/ui-refine.css') }}?v=20260918-4" rel="stylesheet">
+    <link href="{{ asset('css/ui-refine.css') }}?v=20260918-5" rel="stylesheet">
 </head>
 <body class="sm-auth-page">
     <div class="sm-auth-shell">

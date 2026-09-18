@@ -369,6 +369,7 @@
 <!-- ========================================================= -->
 <!-- JAVASCRIPT -->
 <!-- ========================================================= -->
+@push('page_scripts')
 <script>
     console.log('SCRIPT CLIENTE CARGADO');
 
@@ -822,6 +823,7 @@
 
     });
 </script>
+@endpush
 
 @push('page_css')
     <link rel="stylesheet" href="{{ asset('css/modules/pedido-modal-cliente.css') }}?v=20260918-2">

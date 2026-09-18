@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Redistribución de stock | ' . config('app.name'))
+
 @section('content')
     <x-page-header
         title="Redistribución de stock"
@@ -14,8 +16,6 @@
     </x-page-header>
 
     <div class="content px-3 redistribucion-page">
-        @include('sweetalert::alert')
-
         <div class="card sm-filter-card mb-3">
             <div class="card-header">
                 <div>

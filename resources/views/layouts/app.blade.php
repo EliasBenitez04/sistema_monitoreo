@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="theme-color" content="#18202d">
+    <meta name="theme-color" content="#1f2937">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', config('app.name'))</title>
@@ -23,7 +23,7 @@
     @stack('third_party_stylesheets')
     @stack('page_css')
 
-    <link href="{{ asset('css/ui-refine.css') }}?v=20260918-4" rel="stylesheet">
+    <link href="{{ asset('css/ui-refine.css') }}?v=20260918-5" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed sm-app-shell">
@@ -98,7 +98,7 @@
 
         @include('layouts.sidebar')
 
-        <main class="content-wrapper">
+        <main class="content-wrapper" id="main-content">
             @yield('content')
         </main>
 
@@ -130,7 +130,7 @@
                         confirmButtonText: 'Guardar',
                         cancelButtonText: 'Cancelar',
                         reverseButtons: true,
-                        confirmButtonColor: '#2563eb'
+                        confirmButtonColor: '#315f8c'
                     }).then(function (result) {
                         if (result.isConfirmed) {
                             form.dataset.confirmed = '1';
@@ -147,7 +147,7 @@
                     title: alertData.title,
                     text: alertData.text,
                     confirmButtonText: 'Aceptar',
-                    confirmButtonColor: '#2563eb'
+                    confirmButtonColor: '#315f8c'
                 });
             @endif
         });
@@ -169,7 +169,7 @@
                 confirmButtonText: 'Confirmar',
                 cancelButtonText: 'Cancelar',
                 reverseButtons: true,
-                confirmButtonColor: isDelete ? '#dc2626' : '#2563eb'
+                confirmButtonColor: isDelete ? '#dc2626' : '#315f8c'
             }).then(function (result) {
                 if (result.isConfirmed) {
                     form.trigger('submit');

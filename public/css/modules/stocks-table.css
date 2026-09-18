@@ -1,852 +1,530 @@
-/* Extracted from resources/views/stocks/table.blade.php. */
+/*
+ * Importación de datos (stock / ventas).
+ * El módulo mantiene su comportamiento y limita sus estilos a .import-container.
+ */
 
-/* =========================================================
-   CONTENEDOR
-========================================================= */
+body.sm-app-shell .import-container {
+    overflow: hidden;
+    background: var(--sm-surface);
+    border: 1px solid var(--sm-border);
+    border-radius: var(--sm-radius);
+    box-shadow: var(--sm-shadow);
+}
 
-    .import-container {
-        background: #ffffff;
-        border: 1px solid #e5e7eb;
-        border-radius: 14px;
-        overflow: hidden;
-        box-shadow:
-            0 4px 6px rgba(0, 0, 0, .03),
-            0 10px 30px rgba(0, 0, 0, .05);
+body.sm-app-shell .import-container .import-header {
+    min-height: 72px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    background: #fff;
+    border-bottom: 1px solid var(--sm-border);
+}
+
+body.sm-app-shell .import-container .header-content {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+body.sm-app-shell .import-container .header-icon {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 38px;
+    color: var(--sm-success);
+    background: #f0fdf4;
+    border: 1px solid #dcfce7;
+    border-radius: var(--sm-radius-sm);
+    font-size: 16px;
+}
+
+body.sm-app-shell .import-container .header-content h2 {
+    margin: 0;
+    color: var(--sm-text);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+body.sm-app-shell .import-container .header-content p {
+    margin: 3px 0 0;
+    color: var(--sm-muted);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+body.sm-app-shell .import-container .header-status {
+    padding: 5px 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #166534;
+    background: #f0fdf4;
+    border: 1px solid #dcfce7;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+body.sm-app-shell .import-container .status-dot,
+body.sm-app-shell .import-container .loading-dot {
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    flex: 0 0 7px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: none;
+}
+
+body.sm-app-shell .import-container .import-body {
+    padding: 18px;
+}
+
+body.sm-app-shell .import-container .section-title {
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+body.sm-app-shell .import-container .section-icon {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 34px;
+    color: var(--sm-text-secondary);
+    background: #f8fafc;
+    border: 1px solid var(--sm-border);
+    border-radius: var(--sm-radius-sm);
+    font-size: 13px;
+}
+
+body.sm-app-shell .import-container .section-title h4 {
+    margin: 0;
+    color: var(--sm-text);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+body.sm-app-shell .import-container .section-title p {
+    margin: 2px 0 0;
+    color: var(--sm-muted);
+    font-size: 12px;
+}
+
+body.sm-app-shell .import-container .upload-zone {
+    position: relative;
+    min-height: 176px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #fafbfc;
+    border: 1px dashed var(--sm-border-strong);
+    border-radius: var(--sm-radius);
+    transition: border-color .15s ease, background-color .15s ease;
+}
+
+body.sm-app-shell .import-container .upload-zone:hover,
+body.sm-app-shell .import-container .upload-zone.dragover {
+    background: #f7fafc;
+    border-color: #8aa8c2;
+    transform: none;
+}
+
+body.sm-app-shell .import-container .upload-zone.selected {
+    background: #f6fbf7;
+    border-color: #86b894;
+}
+
+body.sm-app-shell .import-container .upload-zone input {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+body.sm-app-shell .import-container .upload-content {
+    min-height: 176px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+body.sm-app-shell .import-container .upload-icon {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sm-success);
+    background: #f0fdf4;
+    border: 1px solid #dcfce7;
+    border-radius: 50%;
+    font-size: 19px;
+}
+
+body.sm-app-shell .import-container .upload-content h4 {
+    margin: 0;
+    color: var(--sm-text);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+body.sm-app-shell .import-container .upload-content p {
+    margin: 5px 0 11px;
+    color: var(--sm-muted);
+    font-size: 12px;
+}
+
+body.sm-app-shell .import-container .upload-button {
+    padding: 7px 11px;
+    display: inline-flex;
+    align-items: center;
+    color: var(--sm-text-secondary);
+    background: #fff;
+    border: 1px solid var(--sm-border-strong);
+    border-radius: var(--sm-radius-sm);
+    box-shadow: none;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+body.sm-app-shell .import-container .supported-files {
+    margin-top: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+body.sm-app-shell .import-container .supported-files span {
+    padding: 3px 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--sm-muted);
+    background: #fff;
+    border: 1px solid var(--sm-border);
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+body.sm-app-shell .import-container .file-info {
+    margin-top: 12px;
+    padding: 10px 11px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    background: #f8fafc;
+    border: 1px solid var(--sm-border);
+    border-radius: var(--sm-radius-sm);
+}
+
+body.sm-app-shell .import-container .file-info.show {
+    display: flex;
+}
+
+body.sm-app-shell .import-container .file-info-icon {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 34px;
+    color: var(--sm-success);
+    background: #f0fdf4;
+    border-radius: var(--sm-radius-sm);
+}
+
+body.sm-app-shell .import-container .file-details {
+    min-width: 0;
+    flex: 1;
+}
+
+body.sm-app-shell .import-container .file-details strong,
+body.sm-app-shell .import-container .file-details span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+body.sm-app-shell .import-container .file-details strong {
+    color: var(--sm-text);
+    font-size: 12px;
+}
+
+body.sm-app-shell .import-container .file-details span {
+    margin-top: 2px;
+    color: var(--sm-muted);
+    font-size: 11px;
+}
+
+body.sm-app-shell .import-container .remove-file {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sm-muted);
+    background: transparent;
+    border: 0;
+    border-radius: var(--sm-radius-sm);
+}
+
+body.sm-app-shell .import-container .remove-file:hover {
+    color: var(--sm-danger);
+    background: #fef2f2;
+}
+
+body.sm-app-shell .import-container .process-info {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
+body.sm-app-shell .import-container .info-item {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: #fafbfc;
+    border: 1px solid var(--sm-border);
+    border-radius: var(--sm-radius-sm);
+}
+
+body.sm-app-shell .import-container .info-item-icon {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 30px;
+    color: var(--sm-primary);
+    background: var(--sm-primary-soft);
+    border-radius: var(--sm-radius-sm);
+    font-size: 12px;
+}
+
+body.sm-app-shell .import-container .info-item span,
+body.sm-app-shell .import-container .info-item strong {
+    display: block;
+}
+
+body.sm-app-shell .import-container .info-item span {
+    color: var(--sm-muted);
+    font-size: 10px;
+}
+
+body.sm-app-shell .import-container .info-item strong {
+    margin-top: 1px;
+    color: var(--sm-text);
+    font-size: 12px;
+}
+
+body.sm-app-shell .import-container .form-actions {
+    margin-top: 16px;
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-top: 1px solid var(--sm-border);
+}
+
+body.sm-app-shell .import-container .security-message {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--sm-muted);
+    font-size: 11px;
+}
+
+body.sm-app-shell .import-container .btn-import {
+    min-height: 38px;
+    padding: 8px 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #fff;
+    background: var(--sm-primary);
+    border: 1px solid var(--sm-primary);
+    border-radius: var(--sm-radius-sm);
+    box-shadow: none;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+body.sm-app-shell .import-container .btn-import:hover:not(:disabled) {
+    background: var(--sm-primary-dark);
+    border-color: var(--sm-primary-dark);
+}
+
+body.sm-app-shell .import-container .btn-import:disabled {
+    cursor: not-allowed;
+    opacity: .55;
+}
+
+/* Processing overlay */
+body.sm-app-shell #loadingOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2050;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: rgba(31, 41, 55, .48);
+}
+
+body.sm-app-shell #loadingOverlay .loading-box {
+    width: min(360px, 100%);
+    padding: 24px;
+    background: #fff;
+    border: 1px solid var(--sm-border);
+    border-radius: 10px;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, .16);
+    text-align: center;
+    animation: none;
+}
+
+body.sm-app-shell #loadingOverlay .loading-icon {
+    margin-bottom: 10px;
+}
+
+body.sm-app-shell #loadingOverlay .loading-icon-inner {
+    width: 46px;
+    height: 46px;
+    margin: 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sm-primary);
+    background: var(--sm-primary-soft);
+    border: 1px solid #d8e4ed;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+body.sm-app-shell #loadingOverlay .loading-status {
+    margin-bottom: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--sm-muted);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+body.sm-app-shell #loadingOverlay h3 {
+    margin: 0;
+    color: var(--sm-text);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+body.sm-app-shell #loadingOverlay .loading-description {
+    margin: 7px 0 16px;
+    color: var(--sm-muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+body.sm-app-shell #loadingOverlay .progress-container {
+    text-align: left;
+}
+
+body.sm-app-shell #loadingOverlay .progress-header,
+body.sm-app-shell #loadingOverlay .loading-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--sm-muted);
+    font-size: 11px;
+}
+
+body.sm-app-shell #loadingOverlay .progress-custom {
+    height: 7px;
+    margin-top: 7px;
+    overflow: hidden;
+    background: #e8edf3;
+    border-radius: 999px;
+}
+
+body.sm-app-shell #loadingOverlay #progressBar {
+    width: 0;
+    height: 100%;
+    background: var(--sm-primary);
+    border-radius: inherit;
+    transition: width .3s ease;
+}
+
+body.sm-app-shell #loadingOverlay .loading-footer {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--sm-border);
+}
+
+body.sm-app-shell #loadingOverlay .loading-warning {
+    margin-top: 12px;
+    padding: 8px 9px;
+    color: var(--sm-muted);
+    background: #f8fafc;
+    border: 1px solid var(--sm-border);
+    border-radius: var(--sm-radius-sm);
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+@media (max-width: 767.98px) {
+    body.sm-app-shell .import-container .import-header,
+    body.sm-app-shell .import-container .form-actions {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
-
-    /* =========================================================
-   HEADER
-========================================================= */
-
-    .import-header {
-        min-height: 100px;
-        padding: 22px 28px;
-        background: #ffffff;
-        border-bottom: 1px solid #edf0f2;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    body.sm-app-shell .import-container .header-status {
+        align-self: flex-start;
     }
 
-    .header-content {
-        display: flex;
-        align-items: center;
-        gap: 16px;
+    body.sm-app-shell .import-container .process-info {
+        grid-template-columns: 1fr;
     }
 
-    .header-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: 12px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        background: #ecfdf3;
-        color: #16a34a;
-        font-size: 22px;
-    }
-
-    .header-content h2 {
-        margin: 0;
-        font-size: 22px;
-        font-weight: 700;
-        color: #111827;
-    }
-
-    .header-content p {
-        margin: 5px 0 0;
-        color: #6b7280;
-        font-size: 14px;
-    }
-
-    .header-status {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-
-        padding: 8px 13px;
-        border-radius: 20px;
-
-        background: #f0fdf4;
-        color: #15803d;
-
-        font-size: 13px;
-        font-weight: 600;
-    }
-
-    .status-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #22c55e;
-
-        box-shadow: 0 0 0 4px #dcfce7;
-    }
-
-
-    /* =========================================================
-   BODY
-========================================================= */
-
-    .import-body {
-        padding: 30px;
-    }
-
-
-    /* =========================================================
-   SECTION TITLE
-========================================================= */
-
-    .section-title {
-        display: flex;
-        align-items: center;
-        gap: 13px;
-        margin-bottom: 20px;
-    }
-
-    .section-icon {
-        width: 42px;
-        height: 42px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        background: #f3f4f6;
-        color: #374151;
-        border-radius: 10px;
-    }
-
-    .section-title h4 {
-        margin: 0;
-        font-size: 16px;
-        font-weight: 700;
-        color: #111827;
-    }
-
-    .section-title p {
-        margin: 3px 0 0;
-        font-size: 13px;
-        color: #6b7280;
-    }
-
-
-    /* =========================================================
-   DROPZONE
-========================================================= */
-
-    .upload-zone {
-        position: relative;
-
-        min-height: 230px;
-
-        border: 2px dashed #d1d5db;
-        border-radius: 12px;
-
-        background: #fafafa;
-
-        cursor: pointer;
-
-        transition: all .25s ease;
-
-        overflow: hidden;
-    }
-
-    .upload-zone:hover {
-        border-color: #22c55e;
-        background: #f8fffa;
-    }
-
-    .upload-zone.dragover {
-        border-color: #16a34a;
-        background: #f0fdf4;
-        transform: scale(1.005);
-    }
-
-    .upload-zone.selected {
-        border-color: #22c55e;
-        background: #f8fffa;
-    }
-
-    .upload-zone input {
-        position: absolute;
-        inset: 0;
-
+    body.sm-app-shell .import-container .btn-import {
         width: 100%;
-        height: 100%;
-
-        opacity: 0;
-
-        cursor: pointer;
-
-        z-index: 2;
     }
-
-    .upload-content {
-        position: relative;
-        z-index: 1;
-
-        min-height: 230px;
-
-        display: flex;
-        flex-direction: column;
-
-        align-items: center;
-        justify-content: center;
-
-        text-align: center;
-    }
-
-    .upload-icon {
-        width: 64px;
-        height: 64px;
-
-        border-radius: 50%;
-
-        background: #ecfdf3;
-        color: #16a34a;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        font-size: 27px;
-
-        margin-bottom: 13px;
-    }
-
-    .upload-content h4 {
-        margin: 0;
-
-        color: #1f2937;
-
-        font-size: 17px;
-        font-weight: 700;
-    }
-
-    .upload-content p {
-        margin: 7px 0 15px;
-
-        color: #6b7280;
-
-        font-size: 13px;
-    }
-
-    .upload-button {
-        display: inline-flex;
-        align-items: center;
-
-        padding: 9px 17px;
-
-        background: #ffffff;
-
-        border: 1px solid #d1d5db;
-
-        border-radius: 8px;
-
-        color: #374151;
-
-        font-size: 13px;
-        font-weight: 600;
-
-        box-shadow: 0 2px 4px rgba(0, 0, 0, .04);
-    }
-
-    .supported-files {
-        display: flex;
-        gap: 18px;
-
-        margin-top: 17px;
-
-        color: #6b7280;
-
-        font-size: 11px;
-    }
-
-    .supported-files span {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .supported-files i {
-        color: #16a34a;
-    }
-
-
-    /* =========================================================
-   ARCHIVO
-========================================================= */
-
-    .file-info {
-        display: none;
-
-        margin-top: 16px;
-
-        padding: 14px 16px;
-
-        border: 1px solid #bbf7d0;
-
-        background: #f0fdf4;
-
-        border-radius: 10px;
-
-        align-items: center;
-    }
-
-    .file-info.show {
-        display: flex;
-    }
-
-    .file-info-icon {
-        width: 42px;
-        height: 42px;
-
-        border-radius: 9px;
-
-        background: #ffffff;
-        color: #16a34a;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        font-size: 20px;
-    }
-
-    .file-details {
-        flex: 1;
-
-        margin-left: 12px;
-
-        display: flex;
-        flex-direction: column;
-
-        gap: 3px;
-    }
-
-    .file-details strong {
-        color: #166534;
-        font-size: 14px;
-
-        max-width: 600px;
-
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .file-details span {
-        font-size: 12px;
-        color: #6b7280;
-    }
-
-    .remove-file {
-        width: 34px;
-        height: 34px;
-
-        border: none;
-
-        background: transparent;
-
-        color: #9ca3af;
-
-        border-radius: 7px;
-
-        cursor: pointer;
-
-        transition: .2s;
-    }
-
-    .remove-file:hover {
-        background: #fee2e2;
-        color: #dc2626;
-    }
-
-
-    /* =========================================================
-   INFORMACIÓN DEL PROCESO
-========================================================= */
-
-    .process-info {
-        display: grid;
-
-        grid-template-columns: repeat(3, 1fr);
-
-        gap: 12px;
-
-        margin-top: 22px;
-    }
-
-    .info-item {
-        display: flex;
-        align-items: center;
-        gap: 11px;
-
+}
+
+@media (max-width: 575.98px) {
+    body.sm-app-shell .import-container .import-header,
+    body.sm-app-shell .import-container .import-body {
         padding: 14px;
-
-        background: #f9fafb;
-
-        border: 1px solid #f0f1f3;
-
-        border-radius: 10px;
     }
 
-    .info-item-icon {
-        width: 36px;
-        height: 36px;
-
-        border-radius: 8px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        background: #ffffff;
-
-        color: #6b7280;
+    body.sm-app-shell .import-container .upload-zone,
+    body.sm-app-shell .import-container .upload-content {
+        min-height: 160px;
     }
-
-    .info-item div:last-child {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .info-item span {
-        font-size: 11px;
-        color: #9ca3af;
-    }
-
-    .info-item strong {
-        margin-top: 2px;
-
-        color: #374151;
-
-        font-size: 13px;
-    }
-
-
-    /* =========================================================
-   ACCIONES
-========================================================= */
-
-    .form-actions {
-        margin-top: 25px;
-
-        padding-top: 20px;
-
-        border-top: 1px solid #edf0f2;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        gap: 20px;
-    }
-
-    .security-message {
-        display: flex;
-        align-items: center;
-
-        gap: 8px;
-
-        color: #6b7280;
-
-        font-size: 12px;
-    }
-
-    .security-message i {
-        color: #16a34a;
-    }
-
-    .btn-import {
-        border: none;
-
-        border-radius: 9px;
-
-        background: #16a34a;
-
-        color: white;
-
-        padding: 12px 22px;
-
-        font-size: 14px;
-
-        font-weight: 600;
-
-        display: inline-flex;
-
-        align-items: center;
-
-        gap: 9px;
-
-        cursor: pointer;
-
-        transition: all .2s ease;
-
-        box-shadow: 0 4px 10px rgba(22, 163, 74, .18);
-    }
-
-    .btn-import:hover:not(:disabled) {
-        background: #15803d;
-
-        transform: translateY(-1px);
-
-        box-shadow: 0 6px 15px rgba(22, 163, 74, .25);
-    }
-
-    .btn-import:disabled {
-        background: #d1d5db;
-
-        box-shadow: none;
-
-        cursor: not-allowed;
-    }
-
-
-    /* =========================================================
-   OVERLAY
-========================================================= */
-
-    #loadingOverlay {
-        position: fixed;
-
-        inset: 0;
-
-        z-index: 99999;
-
-        display: none;
-
-        align-items: center;
-        justify-content: center;
-
-        background: rgba(17, 24, 39, .72);
-
-        backdrop-filter: blur(5px);
-    }
-
-    .loading-box {
-        width: 440px;
-
-        max-width: calc(100% - 30px);
-
-        background: #ffffff;
-
-        border-radius: 16px;
-
-        padding: 32px;
-
-        text-align: center;
-
-        box-shadow: 0 25px 60px rgba(0, 0, 0, .25);
-    }
-
-
-    /* =========================================================
-   LOADING ICON
-========================================================= */
-
-    .loading-icon {
-        width: 76px;
-        height: 76px;
-
-        margin: 0 auto 15px;
-
-        border-radius: 50%;
-
-        background: #ecfdf3;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .loading-icon-inner {
-        width: 58px;
-        height: 58px;
-
-        border-radius: 50%;
-
-        background: #16a34a;
-
-        color: #ffffff;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        font-size: 24px;
-
-        animation: pulseImport 1.6s infinite;
-    }
-
-    @keyframes pulseImport {
-
-        0% {
-            transform: scale(1);
-        }
-
-        50% {
-            transform: scale(1.08);
-        }
-
-        100% {
-            transform: scale(1);
-        }
-
-    }
-
-
-    /* =========================================================
-   STATUS
-========================================================= */
-
-    .loading-status {
-        display: inline-flex;
-
-        align-items: center;
-
-        gap: 7px;
-
-        padding: 6px 11px;
-
-        border-radius: 20px;
-
-        background: #f0fdf4;
-
-        color: #15803d;
-
-        font-size: 11px;
-
-        font-weight: 700;
-
-        text-transform: uppercase;
-
-        letter-spacing: .4px;
-    }
-
-    .loading-dot {
-        width: 7px;
-        height: 7px;
-
-        border-radius: 50%;
-
-        background: #22c55e;
-
-        animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-
-        50% {
-            opacity: .3;
-        }
-
-    }
-
-    .loading-box h3 {
-        margin: 15px 0 7px;
-
-        font-size: 19px;
-
-        color: #111827;
-    }
-
-    .loading-description {
-        margin: 0 auto 25px;
-
-        max-width: 350px;
-
-        color: #6b7280;
-
-        font-size: 13px;
-
-        line-height: 1.6;
-    }
-
-
-    /* =========================================================
-   PROGRESO
-========================================================= */
-
-    .progress-container {
-        text-align: left;
-    }
-
-    .progress-header {
-        display: flex;
-
-        justify-content: space-between;
-
-        margin-bottom: 8px;
-
-        font-size: 12px;
-
-        color: #6b7280;
-    }
-
-    .progress-header strong {
-        color: #16a34a;
-
-        font-size: 13px;
-    }
-
-    .progress-custom {
-        width: 100%;
-
-        height: 9px;
-
-        background: #e5e7eb;
-
-        border-radius: 20px;
-
-        overflow: hidden;
-    }
-
-    #progressBar {
-        width: 0%;
-
-        height: 100%;
-
-        border-radius: 20px;
-
-        background: linear-gradient(90deg,
-                #16a34a,
-                #22c55e);
-
-        transition: width .4s ease;
-    }
-
-
-    /* =========================================================
-   FOOTER LOADING
-========================================================= */
-
-    .loading-footer {
-        margin-top: 18px;
-
-        padding-top: 15px;
-
-        border-top: 1px solid #f0f1f3;
-
-        display: flex;
-
-        justify-content: space-between;
-
-        align-items: center;
-
-        color: #6b7280;
-
-        font-size: 12px;
-    }
-
-    .loading-footer div {
-        display: flex;
-
-        align-items: center;
-
-        gap: 6px;
-    }
-
-    .loading-footer strong {
-        color: #374151;
-
-        font-size: 13px;
-    }
-
-
-    /* =========================================================
-   WARNING
-========================================================= */
-
-    .loading-warning {
-        margin-top: 16px;
-
-        padding: 9px 11px;
-
-        background: #fffbeb;
-
-        color: #92400e;
-
-        border-radius: 7px;
-
-        font-size: 10px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        gap: 6px;
-    }
-
-
-    /* =========================================================
-   RESPONSIVE
-========================================================= */
-
-    @media(max-width: 768px) {
-
-        .import-header {
-            align-items: flex-start;
-
-            flex-direction: column;
-
-            gap: 15px;
-        }
-
-        .header-status {
-            align-self: flex-start;
-        }
-
-        .import-body {
-            padding: 20px;
-        }
-
-        .process-info {
-            grid-template-columns: 1fr;
-        }
-
-        .form-actions {
-            flex-direction: column;
-
-            align-items: stretch;
-        }
-
-        .security-message {
-            justify-content: center;
-        }
-
-        .btn-import {
-            justify-content: center;
-        }
-
-    }
-
-
-    @media(max-width: 480px) {
-
-        .header-content h2 {
-            font-size: 18px;
-        }
-
-        .header-content p {
-            font-size: 12px;
-        }
-
-        .supported-files {
-            flex-direction: column;
-
-            gap: 5px;
-        }
-
-        .loading-box {
-            padding: 25px 20px;
-        }
-
-    }
+}
